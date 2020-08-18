@@ -1,0 +1,31 @@
+.wrapper__header {
+  position: relative;
+  width: 100%;
+  height: 100px;
+}
+
+.header__trackingLogo {
+  position: relative;
+  width: 100%;
+  height: 50%;
+  background: url("../../modules/img/np-logo.svg") no-repeat center;
+  border-bottom: solid 1px #b1b9c180;
+  margin-bottom: 4%;
+}
+.header__title {
+  display: block;
+  width: 100%;
+  line-height: 1.31;
+}
+
+.header__title .title__wrapper {
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  text-align: center;
+  color: #6c737b;
+  padding: 0;
+  margin: 0;
+  font-family: Muemo, sans-serif;
+}

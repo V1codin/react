@@ -1,0 +1,17 @@
+.container__block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+  position: relative;
+  overflow-y: auto;
+  width: 285px;
+  height: 620px;
+  text-align: center;
+  font-family: Muemo, sans-serif;
+  color: #222222;
+  margin: 7px;
+  padding: 10px;
+  background: #edf765;
+}

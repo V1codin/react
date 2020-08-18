@@ -1,0 +1,5 @@
+{
+  "optionsText": ["Відстежити", "Знайти відділення", "Розрахувати доставку"],
+  "articleText": "Виберіть послугу",
+  "requestName": ["tracking", "branchLoc", "cost"]
+}

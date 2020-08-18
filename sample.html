@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="media.css" />
+    <link rel="stylesheet" href="warning.css" />
+    <link rel="stylesheet" href="select.css" />
+    <script src="bundle.js" defer></script>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="container_wrapper">
+        <div
+          id="np-tracking"
+          class="container_in container_block container_block_m-l"
+        >
+          <!-- 
+          <div id="wrapper_header">
+            <div id="header_tracking-logo"></div>
+            <div id="header_title">
+              <div class="title_h1">
+                <span class="h1_span1">НОВА</span> <br />
+                <span class="h1_span2">ПОШТА</span>
+              </div>
+            </div>
+          </div>
+           -->
+          <div id="wrapper_input-container_in">
+            <input
+              id="input__user-number"
+              class="user_data"
+              type="text"
+              name="number"
+              autocomplete="off"
+              placeholder="Номер посилки"
+            />
+            <span id="user-number__notification" class="notifications"
+              >Номер посилки</span
+            >
+            <input
+              id="input__user-city"
+              class="user_data"
+              type="text"
+              autocomplete="off"
+              placeholder="Місто відділення"
+            />
+            <span id="user-city__notification" class="notifications"
+              >Місто відділення</span
+            >
+            <input
+              id="input__user-branch-number"
+              class="user_data"
+              type="text"
+              autocomplete="off"
+              placeholder="Номер відділення"
+            />
+            <span id="user-branch-number__notification" class="notifications"
+              >№ відділення</span
+            >
+            <!-- -------------------------------------- -->
+            <div class="cost-option">
+              <!-- 
+                <div class="city-sender">
+                  <select
+                    class="cost-option__select_textCl user_data"
+                    id="CitySender"
+                  >
+                  <option disabled selected >Місто відправлення</option></select
+                  ></select>
+                </div>
+                
+
+                
+                <div class="city-recipient">
+                  <select
+                    class="cost-option__select_textCl user_data"
+                    id="CityRecipient"
+                  >
+                    <option disabled selected >Місто отримування</option>
+                    </select
+                  >
+                </div>
+ -->
+              <div class="wrapper__user-deliveryWeight">
+                <input
+                  id="input__user-deliveryWeight"
+                  class="user_data"
+                  type="text"
+                  autocomplete="off"
+                  placeholder="кг"
+                />
+              </div>
+            </div>
+            <!-- -------------------------------------- -->
+          </div>
+          <button id="wrapper_init_btn" class="init_btn">
+            <span id="submit-tracking_span">ПОШУК</span>
+          </button>
+          <button id="wrapper_clear-history" class="init_btn">
+            <span id="clear-history_span">Очистити історію</span>
+          </button>
+        </div>
+        <div
+          class="container_none container_out container_block container_out_mod"
+        ></div>
+        <div
+          class="container_none container_history container_block container_block_m-l"
+        >
+          <ul class="history_list"></ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

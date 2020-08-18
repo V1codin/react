@@ -1,0 +1,43 @@
+.selector {
+  font-family: Roboto;
+  padding: 17px;
+  width: 250px;
+  max-height: 380px;
+  overflow-y: auto;
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  z-index: 50;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+}
+.select__article {
+  margin: 10px auto;
+  padding: 5px;
+  font-size: 23px;
+}
+.selector__option {
+  padding: 5px;
+  margin-top: 5px;
+  border: 2px solid #cccccc;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.selector__option:hover {
+  background-color: #ccc;
+}
+.selector__checkbox {
+  transform: scale(1.2);
+}
+.selector__label {
+  cursor: pointer;
+  padding: 12px;
+  width: 100%;
+  font-size: 20px;
+}
