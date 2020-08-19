@@ -15,7 +15,9 @@ class RequestFacade {
   }
   branchLoc({ branchCity, branchNumber }) {
     return this.request.getBranchLoc(branchCity).then(({ data }) => {
-      return data.find((item) => item.Number === branchNumber);
+      return data.find(
+        (item) => item.Number === String(parseInt(branchNumber))
+      );
     });
   }
   cost() {

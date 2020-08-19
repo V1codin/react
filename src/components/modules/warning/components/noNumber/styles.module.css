@@ -1,0 +1,20 @@
+.warning__header {
+  position: relative;
+  top: -11px;
+  color: #3c3c3c;
+  border: 3px solid #797979;
+  border-bottom: none;
+  width: inherit;
+  height: 35px;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  background: linear-gradient(white, #a0a0a0);
+  background-color: #c2c2c2;
+}
+
+.article {
+  margin-top: 10px;
+  padding: 0 5px;
+  font-size: 20px;
+}

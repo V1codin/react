@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import styles from "./styles.module.css";
 
-import Context from "../../../system/Context";
+import { AppContext } from "../../../system/Context";
 
 export default function () {
-  const { state, setState } = useContext(Context);
+  const { state, setState } = useContext(AppContext);
 
   const numberInput = ({ target }) => {
     setState({ ...state, number: target.value });

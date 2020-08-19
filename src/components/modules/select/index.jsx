@@ -4,10 +4,10 @@ import styles from "./styles.module.css";
 import SelectBtn from "../../modules/button/Button";
 import setts from "./Setts.json";
 
-import Context from "../../../system/Context";
+import { AppContext } from "../../../system/Context";
 
 export default function ({ checker }) {
-  const { selectState, setSelect, selectorBtn } = useContext(Context);
+  const { selectState, setSelect, selectorBtn } = useContext(AppContext);
 
   const boxChange = ({ target }) => {
     setSelect({ ...selectState, [target.id]: target.checked });

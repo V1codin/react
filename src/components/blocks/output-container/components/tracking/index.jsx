@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import styles from "./styles.module.css";
 
-import Context from "../../../../../system/Context";
+import { AppContext } from "../../../../../system/Context";
 
 export default function () {
-  const { trackRes } = useContext(Context);
+  const { trackRes } = useContext(AppContext);
 
-  if (Object.keys(trackRes).length === 0) return null;
+  if (trackRes === null || Object.keys(trackRes).length === 0) return null;
 
   return (
     <div className={styles.container__block}>

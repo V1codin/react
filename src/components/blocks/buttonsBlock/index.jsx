@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import InitBtn from "../../modules/button/Button";
 
-export default function ({ init, clear }) {
+import { AppContext } from "../../../system/Context";
+
+export default function () {
+  const { initFn, clearFn } = useContext(AppContext);
+
   return (
     <>
-      <InitBtn className="init__btn" title="Пошук" onClick={init} />
-      <InitBtn className="init__btn" title="Очистити історію" onClick={clear} />
+      <InitBtn className="init__btn" title="Пошук" onClick={initFn} />
+      <InitBtn
+        className="init__btn"
+        title="Очистити історію"
+        onClick={clearFn}
+      />
     </>
   );
 }

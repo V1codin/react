@@ -7,14 +7,14 @@ class Validation {
     if (number && this.maskNumber.test(number)) {
       return true;
     } else {
-      return alert("Warning");
+      return "incorrectNumberWarning";
     }
   }
   validationCity(city) {
     if (this.maskCity.test(city)) {
       return true;
     } else {
-      alert("Warning");
+      return "incorrectCityWarning";
     }
   }
   validationBranch(city, branchNum) {
@@ -22,13 +22,13 @@ class Validation {
       if (city && branchNum && isFinite(branchNum)) {
         return true;
       } else if (!city && !branchNum) {
-        return alert("Warning");
+        return "incorrectCityBranchWarning";
       } else if (!city && branchNum) {
-        return alert("Warning");
+        return "incorrectCityWarning";
       } else if (city && !branchNum) {
-        return alert("Warning");
+        return "incorrectBranchWarning";
       } else if (city && !isFinite(branchNum)) {
-        return alert("Warning");
+        return "incorrectBranchWarning";
       }
     }
   }

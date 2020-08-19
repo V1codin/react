@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import styles from "./styles.module.css";
 
-import Context from "../../../../../system/Context";
+import { AppContext } from "../../../../../system/Context";
 
 export default function () {
-  const { branchLocRes } = useContext(Context);
+  const { branchLocRes } = useContext(AppContext);
 
   if (
     branchLocRes === null ||

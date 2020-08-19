@@ -1,0 +1,8 @@
+{
+  "noNumberWarning": "Посилка з таким номером не знайдена",
+
+  "incorrectNumberWarning": "Введіть коректний номер ТТН",
+  "incorrectCityWarning": "Введіть коректну назву міста",
+  "incorrectCityBranchWarning": "Введіть коректну назву міста та номер відділення",
+  "incorrectBranchWarning": "Введіть коректний номер відділення"
+}

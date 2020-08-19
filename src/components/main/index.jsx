@@ -1,19 +1,37 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
+import { connect } from "react-redux";
+
+import { AppContext } from "../../system/Context";
 
 import InputContainer from "../blocks/input-container";
-
 import Selector from "../modules/select";
 import RequestFacede from "../../system/Request/RequestFacade";
 import Valid from "../../system/Valid/Validation";
-
 import OutContainer from "../blocks/output-container";
-
-import Context from "../../system/Context";
 
 //59000527233015
 
-function App() {
+const mapDispatchToProps = (dispatch) => {
+  return {
+    initWarning: (nameOfWarning) => {
+      dispatch({
+        type: "INIT_WARNING",
+        nameOfWarning,
+      });
+    },
+  };
+};
+
+const mapStateToProps = (state) => {
+  return {
+    warningObj: state.reducerWarning,
+  };
+};
+
+function App(props) {
+  const { initWarning } = props;
+
   const [state, setState] = useState({
     number: "",
     branchCity: "",
@@ -21,7 +39,12 @@ function App() {
     isSelect: false,
     isOut: false,
   });
-  const [selectState, setSelect] = useState({});
+
+  const [selectState, setSelect] = useState({
+    tracking: false,
+    branchLoc: false,
+    cost: false,
+  });
 
   const [trackRes, setTrackRes] = useState({});
   const [branchLocRes, setBranchLoc] = useState({});
@@ -36,16 +59,26 @@ function App() {
           switch (key) {
             case "tracking":
               const checkNumber = validObj.validateNumber(state.number);
-              if (checkNumber) {
+              if (checkNumber === true) {
                 request.tracking(state).then(({ data }) => {
                   setTrackRes(data[0]);
                 });
+              } else {
+                initWarning(checkNumber);
               }
               break;
             case "branchLoc":
-              request.branchLoc(state).then((res) => {
-                setBranchLoc(res);
-              });
+              const checkBranch = validObj.validationBranch(
+                state.branchCity,
+                state.branchNumber
+              );
+              if (checkBranch === true) {
+                request.branchLoc(state).then((res) => {
+                  setBranchLoc(res);
+                });
+              } else {
+                initWarning(checkBranch);
+              }
               break;
             default:
               setState({ ...state, isSelect: false });
@@ -53,13 +86,18 @@ function App() {
         }
       }
       setState({ ...state, isSelect: !state.isSelect, isOut: true });
+      setSelect({
+        tracking: false,
+        branchLoc: false,
+        cost: false,
+      });
     }
   };
 
   const initFn = () => {
     setState({ ...state, isSelect: !state.isSelect });
   };
-  const clear = () => {
+  const clearFn = () => {
     setState({
       number: "",
       branchCity: "",
@@ -67,13 +105,17 @@ function App() {
       isSelect: false,
       isOut: false,
     });
+    setBranchLoc(null);
+    setTrackRes(null);
   };
 
   return (
     <div className={styles.container__wrapper}>
-      <h2>{state.counter}</h2>
-      <Context.Provider
+      <AppContext.Provider
         value={{
+          initFn,
+          clearFn,
+
           trackRes,
           branchLocRes,
 
@@ -85,12 +127,12 @@ function App() {
           selectorBtn,
         }}
       >
-        <InputContainer initBtn={initFn} clearBtn={clear} />
+        <InputContainer />
         <OutContainer checker={state.isOut} />
         <Selector checker={state.isSelect} />
-      </Context.Provider>
+      </AppContext.Provider>
     </div>
   );
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -6,14 +6,14 @@ import Number from "../../static/numberBlock";
 import BranchLoc from "../../static/branchLoc";
 import ButtonBlock from "../buttonsBlock/index";
 
-export default function ({ initBtn, clearBtn }) {
+export default function () {
   return (
     <div className={styles.container__wrapper}>
       <div className={styles.content}>
         <Header />
         <Number />
         <BranchLoc />
-        <ButtonBlock init={initBtn} clear={clearBtn} />
+        <ButtonBlock />
       </div>
     </div>
   );
