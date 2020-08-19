@@ -13,8 +13,10 @@ class RequestFacade {
       }
     });
   }
-  branchLoc() {
-    console.log("branch loc");
+  branchLoc({ branchCity, branchNumber }) {
+    return this.request.getBranchLoc(branchCity).then(({ data }) => {
+      return data.find((item) => item.Number === branchNumber);
+    });
   }
   cost() {
     console.log("cost");

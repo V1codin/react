@@ -96,8 +96,8 @@ class RequestData {
    * @param {Object} - Object with properties.
    * @param {string} - City the requested branches are in.
    */
-  getBranchLoc(obj, city) {
-    const { apiKey, baseUrl } = obj;
+  getBranchLoc(city) {
+    const { apiKey, baseUrl } = setts;
     return fetch(baseUrl, {
       method: "POST",
       dataType: "json",

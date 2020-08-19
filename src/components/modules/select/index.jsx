@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./styles.module.css";
 
 import SelectBtn from "../../modules/button/Button";
 import setts from "./Setts.json";
 
-export default function ({ checker, state, stateFn, selectBtn }) {
+import Context from "../../../system/Context";
+
+export default function ({ checker }) {
+  const { selectState, setSelect, selectorBtn } = useContext(Context);
+
   const boxChange = ({ target }) => {
-    stateFn({ ...state, [target.id]: target.checked });
+    setSelect({ ...selectState, [target.id]: target.checked });
   };
 
   if (!checker) return null;
@@ -26,7 +30,7 @@ export default function ({ checker, state, stateFn, selectBtn }) {
               </label>
               <input
                 type="checkbox"
-                checked={state.inputV}
+                checked={selectState.inputV}
                 className={styles.selector__checkbox}
                 onChange={boxChange.bind(this)}
                 id={setts.requestName[index]}
@@ -34,7 +38,11 @@ export default function ({ checker, state, stateFn, selectBtn }) {
             </div>
           );
         })}
-        <SelectBtn className="select__btn" title="Шукати" onClick={selectBtn} />
+        <SelectBtn
+          className="select__btn"
+          title="Шукати"
+          onClick={selectorBtn}
+        />
       </form>
     </>
   );

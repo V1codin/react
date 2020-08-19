@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./styles.module.css";
 
-export default function ({ stateFn, state }) {
+import Context from "../../../system/Context";
+
+export default function () {
+  const { state, setState } = useContext(Context);
+
   const numberInput = ({ target }) => {
-    stateFn({ ...state, number: target.value });
+    setState({ ...state, number: target.value });
   };
 
   return (
