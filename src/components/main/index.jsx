@@ -60,8 +60,13 @@ function App(props) {
             case "tracking":
               const checkNumber = validObj.validateNumber(state.number);
               if (checkNumber === true) {
-                request.tracking(state).then(({ data }) => {
-                  setTrackRes(data[0]);
+                request.tracking(state).then((r) => {
+                  if (r) {
+                    const { data } = r;
+                    setTrackRes(data[0]);
+                  } else {
+                    initWarning("noNumberWarning");
+                  }
                 });
               } else {
                 initWarning(checkNumber);
@@ -74,11 +79,18 @@ function App(props) {
               );
               if (checkBranch === true) {
                 request.branchLoc(state).then((res) => {
-                  setBranchLoc(res);
+                  if (res) {
+                    setBranchLoc(res);
+                  } else {
+                    initWarning("incorrectCityBranchWarning");
+                  }
                 });
               } else {
                 initWarning(checkBranch);
               }
+              break;
+            case "cost":
+              request.cost();
               break;
             default:
               setState({ ...state, isSelect: false });

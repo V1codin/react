@@ -8,8 +8,6 @@ class RequestFacade {
     return this.request.getTrackingData(number).then((r) => {
       if (r.data[0].StatusCode !== "3" && r.data[0].StatusCode !== "2") {
         return r;
-      } else {
-        throw Error("Error");
       }
     });
   }

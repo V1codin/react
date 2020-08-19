@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 import Button from "../button/Button";
 import setts from "./components/setts/setts.json";
 
-import NoNumber from "./components/noNumber";
+import Warn from "./components/Warn";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -38,7 +38,7 @@ function Warning(props) {
         return (
           <div className={styles.parent} key={item}>
             <div className={styles.container}>
-              <NoNumber title={setts[item]} />
+              <Warn title={setts[item]} />
               <Button
                 onClick={closeBtn}
                 className="warning__closeBtn"
