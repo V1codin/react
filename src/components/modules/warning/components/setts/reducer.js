@@ -10,11 +10,6 @@ export default function (state = defState, { type, nameOfWarning }) {
       init: [...state.init, nameOfWarning],
     };
   }
-  /*
-  if (type === "CLOSE_WARNING") {
-    return defState;
-  }
-  */
   if (type === "CLOSE_WARNING") {
     if (state.init.length >= 1) {
       return {

@@ -1,13 +1,29 @@
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./styles.module.css";
+import { connect } from "react-redux";
 
-import { AppContext } from "../../../system/Context";
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeNumber: (newNumber) => {
+      dispatch({
+        type: "CHANGE_NUMBER",
+        updated: newNumber,
+      });
+    },
+  };
+};
 
-export default function () {
-  const { state, setState } = useContext(AppContext);
+const mapStateToProps = (state) => {
+  return {
+    inputObj: state.inputData,
+  };
+};
 
-  const numberInput = ({ target }) => {
-    setState({ ...state, number: target.value });
+function numberBlock(props) {
+  const { changeNumber, inputObj } = props;
+
+  const numberHandler = ({ target }) => {
+    changeNumber(target.value);
   };
 
   return (
@@ -18,8 +34,8 @@ export default function () {
         name="number"
         autoComplete="off"
         placeholder="Номер посилки"
-        onChange={numberInput}
-        value={state.number}
+        onChange={numberHandler}
+        value={inputObj.number}
       />
       <span id="user-number__notification" className={styles.notifications}>
         Номер посилки
@@ -27,3 +43,5 @@ export default function () {
     </div>
   );
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(numberBlock);

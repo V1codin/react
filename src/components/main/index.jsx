@@ -20,22 +20,25 @@ const mapDispatchToProps = (dispatch) => {
         nameOfWarning,
       });
     },
+    clear: () => {
+      dispatch({
+        type: "CLEAR",
+      });
+    },
   };
 };
 
 const mapStateToProps = (state) => {
   return {
+    userData: state.inputData,
     warningObj: state.reducerWarning,
   };
 };
 
 function App(props) {
-  const { initWarning } = props;
+  const { initWarning, userData, clear } = props;
 
   const [state, setState] = useState({
-    number: "",
-    branchCity: "",
-    branchNumber: "",
     isSelect: false,
     isOut: false,
   });
@@ -58,9 +61,9 @@ function App(props) {
         if (selectState[key] === true) {
           switch (key) {
             case "tracking":
-              const checkNumber = validObj.validateNumber(state.number);
+              const checkNumber = validObj.validateNumber(userData.number);
               if (checkNumber === true) {
-                request.tracking(state).then((r) => {
+                request.tracking(userData).then((r) => {
                   if (r) {
                     const { data } = r;
                     setTrackRes(data[0]);
@@ -74,11 +77,11 @@ function App(props) {
               break;
             case "branchLoc":
               const checkBranch = validObj.validationBranch(
-                state.branchCity,
-                state.branchNumber
+                userData.branchCity,
+                userData.branchNumber
               );
               if (checkBranch === true) {
-                request.branchLoc(state).then((res) => {
+                request.branchLoc(userData).then((res) => {
                   if (res) {
                     setBranchLoc(res);
                   } else {
@@ -110,10 +113,8 @@ function App(props) {
     setState({ ...state, isSelect: !state.isSelect });
   };
   const clearFn = () => {
+    clear();
     setState({
-      number: "",
-      branchCity: "",
-      branchNumber: "",
       isSelect: false,
       isOut: false,
     });
@@ -130,9 +131,6 @@ function App(props) {
 
           trackRes,
           branchLocRes,
-
-          state,
-          setState,
 
           selectState,
           setSelect,

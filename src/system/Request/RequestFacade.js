@@ -18,6 +18,9 @@ class RequestFacade {
       );
     });
   }
+  getCities() {
+    return this.request.getCityRef();
+  }
   cost() {
     console.log("cost");
   }

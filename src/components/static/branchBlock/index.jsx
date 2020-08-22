@@ -1,16 +1,37 @@
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./styles.module.css";
+import { connect } from "react-redux";
 
-import { AppContext } from "../../../system/Context";
+const mapStateToProps = (state) => {
+  return {
+    userData: state.inputData,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    branchLCity: (data) => {
+      dispatch({
+        type: "CHANGE_BRANCHCITY",
+        updated: data,
+      });
+    },
+    branchLNumber: (data) => {
+      dispatch({
+        type: "CHANGE_BRANCHNUMBER",
+        updated: data,
+      });
+    },
+  };
+};
 
-export default function () {
-  const { state, setState } = useContext(AppContext);
+function BranchLoc(props) {
+  const { userData, branchLCity, branchLNumber } = props;
 
   const branchCityInput = ({ target }) => {
-    setState({ ...state, branchCity: target.value });
+    branchLCity(target.value);
   };
   const branchNumberInput = ({ target }) => {
-    setState({ ...state, branchNumber: target.value });
+    branchLNumber(target.value);
   };
 
   return (
@@ -22,7 +43,7 @@ export default function () {
         autoComplete="off"
         placeholder="Місто відділення"
         onChange={branchCityInput}
-        value={state.branchCity}
+        value={userData.branchCity}
       />
       <span
         id="user-branch-city__notification"
@@ -37,7 +58,7 @@ export default function () {
         autoComplete="off"
         placeholder="Номер відділення"
         onChange={branchNumberInput}
-        value={state.branchNumber}
+        value={userData.branchNumber}
       />
       <span
         id="user-branch-number__notification"
@@ -48,3 +69,5 @@ export default function () {
     </div>
   );
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(BranchLoc);
