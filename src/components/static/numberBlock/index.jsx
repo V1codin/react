@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 const mapDispatchToProps = (dispatch) => {
   return {
     changeNumber: (newNumber) => {
-      dispatch({
+      return dispatch({
         type: "CHANGE_NUMBER",
         updated: newNumber,
       });
@@ -23,7 +23,7 @@ function numberBlock(props) {
   const { changeNumber, inputObj } = props;
 
   const numberHandler = ({ target }) => {
-    changeNumber(target.value);
+    return changeNumber(target.value);
   };
 
   return (

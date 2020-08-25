@@ -21,8 +21,8 @@ class RequestFacade {
   getCities() {
     return this.request.getCityRef();
   }
-  cost() {
-    console.log("cost");
+  cost(dataObj) {
+    return this.request.getDeliveryCost(dataObj);
   }
 }
 export default RequestFacade;

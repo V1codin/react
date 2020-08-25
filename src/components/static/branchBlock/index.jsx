@@ -10,13 +10,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     branchLCity: (data) => {
-      dispatch({
+      return dispatch({
         type: "CHANGE_BRANCHCITY",
         updated: data,
       });
     },
     branchLNumber: (data) => {
-      dispatch({
+      return dispatch({
         type: "CHANGE_BRANCHNUMBER",
         updated: data,
       });

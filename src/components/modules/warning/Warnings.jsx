@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
 import { connect } from "react-redux";
 
 import styles from "./styles.module.css";
@@ -26,30 +26,39 @@ const mapStateToProps = (state) => {
 function Warning(props) {
   const { warningObj, closeWarning } = props;
 
+  const raw = useMemo(() => {
+    return warningObj;
+  }, [warningObj]);
+
+  const [state, setState] = useState({
+    warns: [],
+    close: () => {
+      raw.pop();
+      closeWarning();
+      setState({
+        ...state,
+      });
+    },
+  });
+
   if (warningObj === []) return null;
 
-  const closeBtn = () => {
-    closeWarning([...warningObj, warningObj.pop()]);
-  };
+  const myWarns = raw.map((item) => {
+    return (
+      <div className={styles.parent} key={item}>
+        <div className={styles.container}>
+          <Warn title={setts[item]} />
+          <Button
+            onClick={state.close}
+            className="warning__closeBtn"
+            title="Зрозуміло"
+          />
+        </div>
+      </div>
+    );
+  });
 
-  return (
-    <>
-      {warningObj.map((item) => {
-        return (
-          <div className={styles.parent} key={item}>
-            <div className={styles.container}>
-              <Warn title={setts[item]} />
-              <Button
-                onClick={closeBtn}
-                className="warning__closeBtn"
-                title="Зрозуміло"
-              />
-            </div>
-          </div>
-        );
-      })}
-    </>
-  );
+  return <>{myWarns}</>;
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Warning);

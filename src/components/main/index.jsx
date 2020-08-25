@@ -10,18 +10,16 @@ import RequestFacede from "../../system/Request/RequestFacade";
 import Valid from "../../system/Valid/Validation";
 import OutContainer from "../blocks/output-container";
 
-//59000527233015
-
 const mapDispatchToProps = (dispatch) => {
   return {
     initWarning: (nameOfWarning) => {
-      dispatch({
+      return dispatch({
         type: "INIT_WARNING",
         nameOfWarning,
       });
     },
     clear: () => {
-      dispatch({
+      return dispatch({
         type: "CLEAR",
       });
     },
@@ -51,6 +49,11 @@ function App(props) {
 
   const [trackRes, setTrackRes] = useState({});
   const [branchLocRes, setBranchLoc] = useState({});
+  const [deliveryCostRes, setDeliveryCost] = useState({
+    sender: "",
+    reciver: "",
+    cost: [],
+  });
 
   const request = new RequestFacede();
   const validObj = new Valid();
@@ -93,13 +96,32 @@ function App(props) {
               }
               break;
             case "cost":
-              request.cost();
+              const checkCost = validObj.validationCost(
+                userData.sender,
+                userData.recipient,
+                userData.deliveryWeight
+              );
+              if (checkCost === true) {
+                request.cost(userData).then(({ data }) => {
+                  if (data) {
+                    setDeliveryCost({
+                      ...deliveryCostRes,
+                      cost: data[0],
+                    });
+                  } else {
+                    initWarning("noCostDataWarning");
+                  }
+                });
+              } else {
+                initWarning(checkCost);
+              }
               break;
             default:
               setState({ ...state, isSelect: false });
           }
         }
       }
+
       setState({ ...state, isSelect: !state.isSelect, isOut: true });
       setSelect({
         tracking: false,
@@ -121,7 +143,6 @@ function App(props) {
     setBranchLoc(null);
     setTrackRes(null);
   };
-
   return (
     <div className={styles.container__wrapper}>
       <AppContext.Provider
@@ -131,6 +152,7 @@ function App(props) {
 
           trackRes,
           branchLocRes,
+          deliveryCostRes,
 
           selectState,
           setSelect,

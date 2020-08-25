@@ -17,9 +17,7 @@ const mapDispatchToProps = (dispatch) => {
 
 function SenderSelect(props) {
   const { extractData } = props;
-  const context = useContext(CostSelect);
-
-  const { state, setState, cities } = context;
+  const { state, setState, cities } = useContext(CostSelect);
 
   const selectHandler = ({ target }) => {
     extractData(target.value);

@@ -1,8 +1,13 @@
 {
   "noNumberWarning": "Посилка з таким номером не знайдена",
+  "noCostDataWarning": "Дані не знайденні",
 
   "incorrectNumberWarning": "Введіть коректний номер ТТН",
   "incorrectCityWarning": "Введіть коректну назву міста",
   "incorrectCityBranchWarning": "Введіть коректну назву міста та номер відділення",
-  "incorrectBranchWarning": "Введіть коректний номер відділення"
+  "incorrectBranchWarning": "Введіть коректний номер відділення",
+  "incorrectSenderWarning": "Виберіть місто відправника",
+  "incorrectRecipientWarning": "Виберіть місто одержувача",
+  "incorrectWeight": "Введіть вагу посилки",
+  "incorrectCostWarning": "Введіть ваши дані"
 }

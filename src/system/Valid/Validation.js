@@ -1,10 +1,40 @@
 class Validation {
   constructor() {
+    this.maskRefs = /^[a-zA-Z\-\d]{36}$/;
     this.maskNumber = /^\d{14}$/;
     this.maskCity = /^([а-яА-ЯёЁії]+[-]?[а-яА-ЯёЁії]*[-]?[а-яА-ЯёЁії]*[-]?[а-яА-ЯёЁії]*)$/i;
   }
+  validationCost(refSender, refRecipient, weight) {
+    if (
+      this.maskRefs.test(refSender) &&
+      this.maskRefs.test(refRecipient) &&
+      weight !== ""
+    ) {
+      return true;
+    } else if (
+      !this.maskRefs.test(refSender) &&
+      this.maskRefs.test(refRecipient) &&
+      weight !== ""
+    ) {
+      return "incorrectSenderWarning";
+    } else if (
+      this.maskRefs.test(refSender) &&
+      !this.maskRefs.test(refRecipient) &&
+      weight !== ""
+    ) {
+      return "incorrectRecipientWarning";
+    } else if (
+      this.maskRefs.test(refSender) &&
+      this.maskRefs.test(refRecipient) &&
+      weight === ""
+    ) {
+      return "incorrectWeight";
+    } else {
+      return "incorrectCostWarning";
+    }
+  }
   validateNumber(number) {
-    if (number && this.maskNumber.test(number)) {
+    if (this.maskNumber.test(number)) {
       return true;
     } else {
       return "incorrectNumberWarning";

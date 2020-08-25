@@ -4,6 +4,7 @@ const defState = {
   branchNumber: "",
   sender: "",
   recipient: "",
+  deliveryWeight: "",
 };
 
 export default function (state = defState, { type, updated }) {
@@ -38,6 +39,12 @@ export default function (state = defState, { type, updated }) {
     return {
       ...state,
       recipient: updated,
+    };
+  }
+  if (type === "CHANGE_WEIGHT") {
+    return {
+      ...state,
+      deliveryWeight: updated,
     };
   }
   return state;

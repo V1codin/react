@@ -26,14 +26,9 @@ class RequestData {
       .catch((r) => console.log(r));
   }
 
-  getDeliveryCost(initObj) {
-    const {
-      apiKey,
-      baseUrl,
-      costCitySender,
-      costCityRecipient,
-      userDeliveryWeight,
-    } = initObj;
+  getDeliveryCost(props) {
+    const { apiKey, baseUrl } = setts;
+    const { sender, recipient, deliveryWeight } = props;
 
     return fetch(baseUrl, {
       method: "POST",
@@ -48,10 +43,10 @@ class RequestData {
         language: "ua",
         methodProperties: {
           CargoType: "Parcel",
-          CityRecipient: costCityRecipient.value,
-          CitySender: costCitySender.value,
+          CityRecipient: recipient,
+          CitySender: sender,
           Cost: "200",
-          Weight: parseInt(userDeliveryWeight.value),
+          Weight: parseInt(deliveryWeight),
         },
         modelName: "InternetDocument",
       }),
