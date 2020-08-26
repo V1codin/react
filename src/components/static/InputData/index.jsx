@@ -19,21 +19,32 @@ function UserData(props) {
   });
   const { getTodos } = props;
 
-  const onChange = ({ target }) => {
+  const onChange = (e) => {
     setState({
       ...state,
-      value: target.value,
+      value: e.target.value,
     });
   };
 
   const onSubmit = () => {
     if (state.value.length > 0) {
-      localStorage.setItem(`Todo ${localStorage.length + 1}`, state.value);
+      localStorage.setItem(`${localStorage.length}`, state.value);
+      /*
+      localStorage.setItem(
+        `${localStorage.length}`,
+        JSON.stringify({ title: state.value })
+      );
+      */
       getTodos();
     } else {
       alert("no");
     }
     setState({ ...state, value: "" });
+  };
+
+  const formSubmit = (e) => {
+    e.preventDefault();
+    onSubmit();
   };
 
   const clearStorage = () => {
@@ -47,18 +58,20 @@ function UserData(props) {
 
   return (
     <div className={styles.__wrapper}>
-      <input
-        className={styles.__input}
-        type="text"
-        autoComplete="off"
-        value={state.value}
-        onChange={onChange}
-        placeholder="Enter todo"
-      />
-      <div className={styles.btn__container}>
-        <Btn className="btn__add" title="Add" onClick={onSubmit} />
-        <Btn className="btn__clear" title="Del" onClick={clearStorage} />
-      </div>
+      <form onSubmit={formSubmit}>
+        <input
+          className={styles.__input}
+          type="text"
+          autoComplete="off"
+          value={state.value}
+          onChange={onChange}
+          placeholder="Enter todo"
+        />
+        <div className={styles.btn__container}>
+          <Btn className="btn__add" title="Add" onClick={onSubmit} />
+          <Btn className="btn__clear" title="Clear" onClick={clearStorage} />
+        </div>
+      </form>
     </div>
   );
 }

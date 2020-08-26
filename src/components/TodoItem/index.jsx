@@ -3,20 +3,29 @@ import styles from "./styles.module.css";
 
 import Btn from "../Modules/Button/Button";
 
-function Todo({ title }) {
+function Todo({ title, checkers, handler }) {
+  const isChecked = ({ target }) => {
+    const checkbox = target.parentElement.outerText;
+    const temp = {
+      [checkbox]: target.checked,
+    };
+    handler(temp);
+  };
+  const delBtn = ({ target }) => {
+    console.dir(target);
+  };
+
   return (
-    <div className={styles.container__wrapper}>
-      <div className={styles.__header}>
-        <input type="checkbox" id="checkbox" />
-        <label className={styles.__topic} htmlFor="checkbox">
-          {title}
-        </label>
-      </div>
-      <div className={styles.__btnWrapper}>
+    <li className={styles.container__wrapper}>
+      <span className={styles.__header}>
+        <input type="checkbox" onChange={isChecked} />
+        <span className={styles.__topic}>{title}</span>
+      </span>
+      <span className={styles.__btnWrapper}>
         <Btn className="__btn__aprove" title="Done" />
-        <Btn className="__btn__cancel" title="Delete" />
-      </div>
-    </div>
+        <Btn className="__btn__cancel" title="Delete" onClick={delBtn} />
+      </span>
+    </li>
   );
 }
 
