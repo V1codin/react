@@ -9,7 +9,7 @@ export default function MainReducer(state = initianal, action) {
 
     for (let i = 0; i < localStorage.length; i++) {
       //   tempAr.push(JSON.parse(localStorage[i]));
-      tempAr.push(localStorage[i]);
+      tempAr.push(JSON.parse(localStorage[i]));
     }
     return {
       ...state,

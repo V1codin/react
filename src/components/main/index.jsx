@@ -42,7 +42,7 @@ function Main(props) {
         {todosArr.map((item, index) => {
           return (
             <Todo
-              title={item}
+              title={item.title}
               key={index}
               handler={updateCheckbox}
               checkers={checkersArr}

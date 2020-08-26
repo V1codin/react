@@ -28,13 +28,11 @@ function UserData(props) {
 
   const onSubmit = () => {
     if (state.value.length > 0) {
-      localStorage.setItem(`${localStorage.length}`, state.value);
-      /*
+      // localStorage.setItem(`${localStorage.length}`, state.value);
       localStorage.setItem(
         `${localStorage.length}`,
-        JSON.stringify({ title: state.value })
+        JSON.stringify({ title: state.value, id: localStorage.length })
       );
-      */
       getTodos();
     } else {
       alert("no");
