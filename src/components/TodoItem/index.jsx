@@ -3,12 +3,15 @@ import styles from "./styles.module.css";
 
 import Btn from "../Modules/Button/Button";
 
-function Todo(props) {
-  const { title } = props;
-
+function Todo({ title }) {
   return (
     <div className={styles.container__wrapper}>
-      <p className={styles.__topic}>{title}</p>
+      <div className={styles.__header}>
+        <input type="checkbox" id="checkbox" />
+        <label className={styles.__topic} htmlFor="checkbox">
+          {title}
+        </label>
+      </div>
       <div className={styles.__btnWrapper}>
         <Btn className="__btn__aprove" title="Done" />
         <Btn className="__btn__cancel" title="Delete" />

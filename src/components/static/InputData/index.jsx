@@ -1,11 +1,23 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
 import Btn from "../../Modules/Button/Button";
+import { connect } from "react-redux";
 
-function UserData() {
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getTodos: () => {
+      return dispatch({
+        type: "GET_TODOS",
+      });
+    },
+  };
+};
+
+function UserData(props) {
   const [state, setState] = useState({
     value: "",
   });
+  const { getTodos } = props;
 
   const onChange = ({ target }) => {
     setState({
@@ -16,10 +28,8 @@ function UserData() {
 
   const onSubmit = () => {
     if (state.value.length > 0) {
-      localStorage.setItem(
-        localStorage.length + 1,
-        JSON.stringify(state.value)
-      );
+      localStorage.setItem(`Todo ${localStorage.length + 1}`, state.value);
+      getTodos();
     } else {
       alert("no");
     }
@@ -30,7 +40,9 @@ function UserData() {
     localStorage.clear();
     setState({
       ...state,
+      value: "",
     });
+    getTodos();
   };
 
   return (
@@ -41,11 +53,14 @@ function UserData() {
         autoComplete="off"
         value={state.value}
         onChange={onChange}
+        placeholder="Enter todo"
       />
-      <Btn className="btn__add" title="Add" onClick={onSubmit} />
-      <Btn className="btn__clear" title="Del" onClick={clearStorage} />
+      <div className={styles.btn__container}>
+        <Btn className="btn__add" title="Add" onClick={onSubmit} />
+        <Btn className="btn__clear" title="Del" onClick={clearStorage} />
+      </div>
     </div>
   );
 }
 
-export default UserData;
+export default connect(null, mapDispatchToProps)(UserData);
