@@ -1,16 +1,12 @@
 import React from "react";
 import styles from "./styles.module.css";
 
-export default function () {
+function Header() {
   return (
-    <div className={styles.wrapper__header}>
-      <div className={styles.header__trackingLogo}></div>
-      <div className={styles.header__title}>
-        <div className={styles.title__wrapper}>
-          <span>НОВА</span> <br />
-          <span>ПОШТА</span>
-        </div>
-      </div>
-    </div>
+    <header className={styles.__header}>
+      <h1 className={styles.__article}>Todo App</h1>
+    </header>
   );
 }
+
+export default Header;

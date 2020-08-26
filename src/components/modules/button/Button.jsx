@@ -3,7 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import LinkRoute from "./components/LinkRoute";
-import Btn from "./components/Btn/index";
+import Btn from "./components/Btn";
 
 Button.propTypes = {
   type: PropTypes.string,
@@ -21,12 +21,13 @@ export default function Button({
   title,
   className,
   classList,
+  data,
 }) {
   switch (type) {
     case "linkRoute": {
       return <LinkRoute href={href} title={title} className={className} />;
     }
-    case "closeBtn": {
+    case "aprove": {
       return (
         <Btn
           classList={classList}
@@ -37,7 +38,14 @@ export default function Button({
       );
     }
     default: {
-      return <Btn onClick={onClick} className={className} title={title} />;
+      return (
+        <Btn
+          onClick={onClick}
+          className={className}
+          title={title}
+          data={data}
+        />
+      );
     }
   }
 }

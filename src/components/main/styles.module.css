@@ -1,9 +1,12 @@
 .container__wrapper {
+  width: inherit;
+  margin: 10px;
+  padding: 1em;
+  border: 1px solid #646464;
+  box-shadow: 20px 0 20px -20px #000 inset, -20px 0 20px -20px #000 inset;
+  background-color: #fff;
+  overflow: hidden;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  margin: 15px auto;
-  max-width: 1200px;
+  flex-direction: column;
+  align-self: center;
 }

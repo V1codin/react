@@ -1,0 +1,64 @@
+.__footer {
+  width: inherit;
+  margin: auto 10px 0 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-image: linear-gradient(
+    to top right,
+    #cacaca,
+    #878787,
+    #5a5a5a,
+    #2d2d2d,
+    #161616,
+    #000000,
+    #000000
+  );
+}
+
+.__topic {
+  font-size: 15px;
+  text-align: center;
+
+  padding: 5px;
+  color: #acacac;
+}
+.__iconWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 35rem;
+  padding: 10px;
+}
+.__icons {
+  font-size: 2em;
+}
+.__icons:hover {
+  transform: scale(1.2);
+}
+.__icons_y {
+  color: #ff0000;
+}
+.__icons_y:hover {
+  color: #f74747;
+}
+.__icons_f {
+  color: #003cff;
+}
+.__icons_f:hover {
+  color: #435fff;
+}
+.__icons_t {
+  color: #00cccc;
+}
+.__icons_t:hover {
+  color: #5fffff;
+}
+.__icons_I {
+  color: #fb3958;
+}
+.__icons_I:hover {
+  color: #fa5e78;
+}
