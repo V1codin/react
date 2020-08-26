@@ -3,10 +3,12 @@ import styles from "./styles.module.css";
 
 import Btn from "../Modules/Button/Button";
 
-function Todo() {
+function Todo(props) {
+  const { title } = props;
+
   return (
     <div className={styles.container__wrapper}>
-      <p className={styles.__topic}>Test</p>
+      <p className={styles.__topic}>{title}</p>
       <div className={styles.__btnWrapper}>
         <Btn className="__btn__aprove" title="Done" />
         <Btn className="__btn__cancel" title="Delete" />

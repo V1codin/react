@@ -24,7 +24,8 @@
 
 .__btn__aprove:active,
 .__btn__cancel:active,
-.btn__add:active {
+.btn__add:active,
+.btn__clear:active {
   transform: scale(0.9);
   border: none;
   box-shadow: none;
@@ -59,4 +60,23 @@
   color: #fff;
   border: none;
   background-color: #00a10d;
+}
+.btn__clear {
+  border: 1px solid #a10030;
+  margin: 5px;
+  padding: 10px;
+  color: #a10030;
+  cursor: pointer;
+  outline: none;
+  border-radius: 5px;
+  border-width: 2px;
+  border-style: outset;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.btn__clear:hover {
+  padding: 12px;
+  color: #fff;
+  border: none;
+  background-color: #ff0000;
 }

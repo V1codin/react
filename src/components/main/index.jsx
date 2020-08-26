@@ -9,9 +9,6 @@ function Main() {
     <div className={styles.container__wrapper}>
       <DataBlock />
       <Todo />
-      <Todo />
-      <Todo />
-      <Todo />
     </div>
   );
 }
