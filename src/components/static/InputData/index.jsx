@@ -10,6 +10,17 @@ const mapDispatchToProps = (dispatch) => {
         type: "GET_TODOS",
       });
     },
+    addChecker: (value) => {
+      return dispatch({
+        type: "ADD_CHECKER",
+        newChecker: value,
+      });
+    },
+  };
+};
+const mapStateToProps = (state) => {
+  return {
+    todoEls: state.todos.todoEls,
   };
 };
 
@@ -17,7 +28,7 @@ function UserData(props) {
   const [state, setState] = useState({
     value: "",
   });
-  const { getTodos } = props;
+  const { getTodos, addChecker, todoEls } = props;
 
   const onChange = (e) => {
     setState({
@@ -30,9 +41,10 @@ function UserData(props) {
     if (state.value.length > 0) {
       // localStorage.setItem(`${localStorage.length}`, state.value);
       localStorage.setItem(
-        `${localStorage.length}`,
+        `title ${localStorage.length}`,
         JSON.stringify({ title: state.value, id: localStorage.length })
       );
+      addChecker(todoEls.length);
       getTodos();
     } else {
       alert("no");
@@ -74,4 +86,4 @@ function UserData(props) {
   );
 }
 
-export default connect(null, mapDispatchToProps)(UserData);
+export default connect(mapStateToProps, mapDispatchToProps)(UserData);

@@ -1,29 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.css";
 
 import Btn from "../Modules/Button/Button";
 
-function Todo({ title, checkers, handler }) {
+function Todo({ title, delClick, handler, data }) {
+  const [spanStyle, setSpanStyle] = useState({
+    isToggled: false,
+    style: styles.__topic,
+  });
+
   const isChecked = ({ target }) => {
-    const checkbox = target.parentElement.outerText;
     const temp = {
-      [checkbox]: target.checked,
+      [target.name]: target.checked,
     };
     handler(temp);
   };
-  const delBtn = ({ target }) => {
-    console.dir(target);
+
+  const doneBtn = ({ target }) => {
+    if (!spanStyle.isToggled) {
+      setSpanStyle({
+        ...spanStyle,
+        isToggled: true,
+        style: styles.__topic + " " + styles.__done,
+      });
+    } else {
+      setSpanStyle({
+        ...spanStyle,
+        isToggled: false,
+        style: styles.__topic,
+      });
+    }
   };
 
   return (
     <li className={styles.container__wrapper}>
       <span className={styles.__header}>
-        <input type="checkbox" onChange={isChecked} />
-        <span className={styles.__topic}>{title}</span>
+        <input type="checkbox" onChange={isChecked} name={data} />
+        <span className={spanStyle.style}>{title}</span>
       </span>
       <span className={styles.__btnWrapper}>
-        <Btn className="__btn__aprove" title="Done" />
-        <Btn className="__btn__cancel" title="Delete" onClick={delBtn} />
+        <Btn className="__btn__aprove" title="Done" onClick={doneBtn} />
+        <Btn className="__btn__cancel" title="Delete" onClick={delClick} />
       </span>
     </li>
   );

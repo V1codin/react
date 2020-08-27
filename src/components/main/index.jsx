@@ -8,7 +8,7 @@ import DataBlock from "../Static/InputData";
 const mapStateToProps = (state) => {
   return {
     todosArr: state.todos.todoEls,
-    checkersArr: state.todos.checkers,
+    checkersObj: state.todos.checkers,
   };
 };
 
@@ -25,15 +25,48 @@ const mapDispatchToProps = (dispatch) => {
         updated: updatedStr,
       });
     },
+    /*
+    deleteTodo: (title) => {
+      return dispatch({
+        type: "DEL_TODO",
+        delTitle: title,
+      });
+    },
+    */
   };
 };
+
 function Main(props) {
-  const { todosArr, getTodos, checkersArr, updateCheckbox } = props;
+  const { todosArr, getTodos, checkersObj, updateCheckbox } = props;
 
   useEffect(() => {
     getTodos();
     // eslint-disable-next-line
   }, [localStorage.length]);
+
+  const delBtn = ({ target }) => {
+    for (let item in checkersObj) {
+      if (checkersObj[item] === true) {
+        for (let local in localStorage) {
+          if (local.includes("title")) {
+            if (JSON.parse(localStorage[local]).id === parseInt(item)) {
+              localStorage.removeItem(local);
+              getTodos();
+            }
+          }
+        }
+      }
+      /*
+            if (JSON.parse(localStorage[local]).id === item) {
+              localStorage.removeItem(local);
+            }
+          }
+        }
+      }
+      */
+    }
+    getTodos();
+  };
 
   return (
     <div className={styles.container__wrapper}>
@@ -43,9 +76,10 @@ function Main(props) {
           return (
             <Todo
               title={item.title}
-              key={index}
+              key={item.id}
               handler={updateCheckbox}
-              checkers={checkersArr}
+              delClick={delBtn}
+              data={item.id}
             />
           );
         })}

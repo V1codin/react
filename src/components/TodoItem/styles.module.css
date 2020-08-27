@@ -23,3 +23,7 @@
   flex-direction: row;
   align-items: center;
 }
+.__done {
+  color: #00d300;
+  text-decoration: line-through;
+}
