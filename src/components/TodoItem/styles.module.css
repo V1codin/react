@@ -9,7 +9,7 @@
   justify-content: space-between;
 }
 .__topic {
-  margin: 10px;
+  padding: 10px;
   font-size: 18px;
   color: #000000;
 }
@@ -26,4 +26,7 @@
 .__done {
   color: #00d300;
   text-decoration: line-through;
+}
+.__checkbox {
+  margin-right: 10px;
 }

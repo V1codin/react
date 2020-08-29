@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
 
-import Btn from "../Modules/Button/Button";
+import Btn from "../modules/Button/Button";
 
 function Todo({ title, delClick, handler, data }) {
   const [spanStyle, setSpanStyle] = useState({
@@ -35,8 +35,15 @@ function Todo({ title, delClick, handler, data }) {
   return (
     <li className={styles.container__wrapper}>
       <span className={styles.__header}>
-        <input type="checkbox" onChange={isChecked} name={data} />
-        <span className={spanStyle.style}>{title}</span>
+        <label className={spanStyle.style}>
+          <input
+            type="checkbox"
+            onChange={isChecked}
+            name={data}
+            className={styles.__checkbox}
+          />
+          {title}
+        </label>
       </span>
       <span className={styles.__btnWrapper}>
         <Btn className="__btn__aprove" title="Done" onClick={doneBtn} />

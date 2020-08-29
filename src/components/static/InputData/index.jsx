@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
-import Btn from "../../Modules/Button/Button";
+import Btn from "../../modules/Button/Button";
 import { connect } from "react-redux";
 
 const mapDispatchToProps = (dispatch) => {
