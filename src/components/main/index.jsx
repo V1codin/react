@@ -25,14 +25,6 @@ const mapDispatchToProps = (dispatch) => {
         updated: updatedStr,
       });
     },
-    /*
-    deleteTodo: (title) => {
-      return dispatch({
-        type: "DEL_TODO",
-        delTitle: title,
-      });
-    },
-    */
   };
 };
 
@@ -56,14 +48,6 @@ function Main(props) {
           }
         }
       }
-      /*
-            if (JSON.parse(localStorage[local]).id === item) {
-              localStorage.removeItem(local);
-            }
-          }
-        }
-      }
-      */
     }
     getTodos();
   };
