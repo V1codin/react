@@ -22,17 +22,23 @@
   background-color: rgb(0, 0, 0, 0.3);
   width: 100%;
   height: 100%;
-  animation: rollIn 0.7s linear forwards;
+  animation: rollIn 0.3s linear forwards;
 }
 
 @keyframes rollIn {
   0% {
-    transform: translateY(-50%);
-  }
-  85% {
-    transform: translateY(15%);
+    -webkit-transform: scale(0.7);
+    -moz-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    transform: scale(0.7);
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
   }
   100% {
-    transform: translateY(0px);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
   }
 }
