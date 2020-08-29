@@ -7,7 +7,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import Reducer from "./system/Reducer/Reducer";
 
 import "./index.css";
-import NovaPoshta from "./components/main/index";
+import NovaPoshta from "./components/Main";
 import Warning from "./components/modules/warning/Warnings";
 
 const store = createStore(Reducer, composeWithDevTools());

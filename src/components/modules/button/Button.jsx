@@ -3,7 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import LinkRoute from "./components/LinkRoute";
-import Btn from "./components/Btn/index";
+import Btn from "./components/Btn";
 
 Button.propTypes = {
   type: PropTypes.string,

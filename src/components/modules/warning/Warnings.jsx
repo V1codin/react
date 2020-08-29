@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react";
 import { connect } from "react-redux";
 
 import styles from "./styles.module.css";
-import Button from "../button/Button";
+import Button from "../Button/Button";
 import setts from "./components/setts/setts.json";
 
 import Warn from "./components/Warn";
