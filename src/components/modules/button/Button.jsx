@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 import LinkRoute from "./components/LinkRoute";
 import Btn from "./components/Btn";
+import Span from "./components/Span";
 
 Button.propTypes = {
   type: PropTypes.string,
@@ -36,6 +37,9 @@ export default function Button({
           title={title}
         />
       );
+    }
+    case "edit": {
+      return <Span onClick={onClick} className={className} title={title} />;
     }
     default: {
       return (

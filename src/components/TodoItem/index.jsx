@@ -35,7 +35,7 @@ function Todo({ title, delClick, handler, data }) {
   return (
     <li className={styles.container__wrapper}>
       <span className={styles.__header}>
-        <label className={spanStyle.style}>
+        <label>
           <input
             type="checkbox"
             onChange={isChecked}
@@ -43,12 +43,13 @@ function Todo({ title, delClick, handler, data }) {
             className={styles.__checkbox}
           />
           <span className={styles.__customCheck}></span>
-          {title}
+          <span className={spanStyle.style}>{title}</span>
         </label>
       </span>
       <div className={styles.__btnWrapper}>
         <Btn className="__btn__aprove" title="Done" onClick={doneBtn} />
         <Btn className="__btn__cancel" title="Delete" onClick={delClick} />
+        <Btn className="__edit" title="edit" type="edit" />
       </div>
     </li>
   );

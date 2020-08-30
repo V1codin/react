@@ -53,21 +53,26 @@ function Main(props) {
   };
 
   return (
-    <div className={styles.container__wrapper}>
-      <DataBlock />
-      <ul className={styles.__list}>
-        {todosArr.map((item, index) => {
-          return (
-            <Todo
-              title={item.title}
-              key={item.id}
-              handler={updateCheckbox}
-              delClick={delBtn}
-              data={item.id}
-            />
-          );
-        })}
-      </ul>
+    <div className={styles.wrapper}>
+      <div className={styles.wrapper__input}>
+        <DataBlock />
+      </div>
+      <div className={styles.wrapper__list}>
+        <h2>Things to do</h2>
+        <ul className={styles.__list}>
+          {todosArr.map((item, index) => {
+            return (
+              <Todo
+                title={item.title}
+                key={item.id}
+                handler={updateCheckbox}
+                delClick={delBtn}
+                data={item.id}
+              />
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 }
