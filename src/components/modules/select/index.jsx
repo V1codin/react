@@ -35,6 +35,7 @@ export default function ({ checker }) {
                 onChange={boxChange.bind(this)}
                 id={setts.requestName[index]}
               ></input>
+              <span className={styles.__customCheck}></span>
             </div>
           );
         })}
