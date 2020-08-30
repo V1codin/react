@@ -6,8 +6,8 @@ import { AppContext } from "../../system/Context";
 
 import InputContainer from "../blocks/input-container";
 import Selector from "../modules/select";
-import RequestFacede from "../../system/Request/RequestFacade";
-import Valid from "../../system/Valid/Validation";
+
+import { mainAction } from "./mainAction";
 import OutContainer from "../blocks/output-container";
 
 const mapDispatchToProps = (dispatch) => {
@@ -55,80 +55,24 @@ function App(props) {
     cost: [],
   });
 
-  const request = new RequestFacede();
-  const validObj = new Valid();
-
   const selectorBtn = () => {
-    if (Object.keys(selectState).length > 0) {
-      for (let key in selectState) {
-        if (selectState[key] === true) {
-          switch (key) {
-            case "tracking":
-              const checkNumber = validObj.validateNumber(userData.number);
-              if (checkNumber === true) {
-                request.tracking(userData).then((r) => {
-                  if (r) {
-                    const { data } = r;
-                    setTrackRes(data[0]);
-                  } else {
-                    initWarning("noNumberWarning");
-                  }
-                });
-              } else {
-                initWarning(checkNumber);
-              }
-              break;
-            case "branchLoc":
-              const checkBranch = validObj.validationBranch(
-                userData.branchCity,
-                userData.branchNumber
-              );
-              if (checkBranch === true) {
-                request.branchLoc(userData).then((res) => {
-                  if (res) {
-                    setBranchLoc(res);
-                  } else {
-                    initWarning("incorrectCityBranchWarning");
-                  }
-                });
-              } else {
-                initWarning(checkBranch);
-              }
-              break;
-            case "cost":
-              const checkCost = validObj.validationCost(
-                userData.sender,
-                userData.recipient,
-                userData.deliveryWeight
-              );
-              if (checkCost === true) {
-                request.cost(userData).then(({ data }) => {
-                  if (data) {
-                    setDeliveryCost({
-                      ...deliveryCostRes,
-                      cost: data[0],
-                    });
-                  } else {
-                    initWarning("noCostDataWarning");
-                  }
-                });
-              } else {
-                initWarning(checkCost);
-              }
-              break;
-            default:
-              setState({ ...state, isSelect: false });
-          }
-        }
-      }
+    mainAction({
+      selectState,
+      setTrackRes,
+      initWarning,
+      setBranchLoc,
+      setDeliveryCost,
+      setState,
+      userData,
+      deliveryCostRes,
+      state,
+    });
 
-      setState({ ...state, isSelect: !state.isSelect, isOut: true });
-      setSelect({
-        tracking: false,
-        branchLoc: false,
-        cost: false,
-      });
-    }
+    setSelect({
+      tracking: false,
+      branchLoc: false,
+      cost: false,
+    });
   };
 
   const initFn = () => {
