@@ -1,6 +1,6 @@
 .container__wrapper {
+  margin-top: 20px;
   border-radius: 20px;
-  margin: 7px;
   position: relative;
   overflow-y: auto;
   width: 285px;
