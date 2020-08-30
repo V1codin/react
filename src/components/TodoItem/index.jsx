@@ -45,10 +45,10 @@ function Todo({ title, delClick, handler, data }) {
           {title}
         </label>
       </span>
-      <span className={styles.__btnWrapper}>
+      <div className={styles.__btnWrapper}>
         <Btn className="__btn__aprove" title="Done" onClick={doneBtn} />
         <Btn className="__btn__cancel" title="Delete" onClick={delClick} />
-      </span>
+      </div>
     </li>
   );
 }
