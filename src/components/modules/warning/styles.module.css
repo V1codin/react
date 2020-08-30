@@ -42,3 +42,8 @@
     transform: scale(1);
   }
 }
+@media (max-width: 780px) {
+  .container {
+    left: 25%;
+  }
+}
