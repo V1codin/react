@@ -42,6 +42,7 @@ function Todo({ title, delClick, handler, data }) {
             name={data}
             className={styles.__checkbox}
           />
+          <span className={styles.__customCheck}></span>
           {title}
         </label>
       </span>

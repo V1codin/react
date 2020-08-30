@@ -1,3 +1,10 @@
+.__btn__aprove:focus,
+.__btn__cancel:focus,
+.btn__add:focus,
+.btn__clear:focus {
+  border-color: #86a8df;
+}
+
 .__btn__aprove,
 .__btn__cancel {
   margin: 5px;
