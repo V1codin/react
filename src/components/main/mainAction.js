@@ -78,6 +78,8 @@ export const mainAction = ({
         default:
           setState({ ...state, isSelect: false });
       }
+    } else if (Object.values(selectState).every((item) => item === false)) {
+      return initWarning("noSelectOptions");
     }
   }
   setState({ ...state, isSelect: false });

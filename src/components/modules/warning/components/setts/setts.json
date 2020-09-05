@@ -1,6 +1,7 @@
 {
   "noNumberWarning": "Посилка з таким номером не знайдена",
   "noCostDataWarning": "Дані не знайденні",
+  "noSelectOptions": "Виберіть послугу",
 
   "incorrectNumberWarning": "Введіть коректний номер ТТН",
   "incorrectCityWarning": "Введіть коректну назву міста",
