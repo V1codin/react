@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styles from "./styles.module.css";
 import Todo from "../TodoItem";
 import { connect } from "react-redux";
+import { AppContext } from "../../system/Context/";
 
 import DataBlock from "../Static/InputData";
 
@@ -36,7 +37,7 @@ function Main(props) {
     // eslint-disable-next-line
   }, [localStorage.length]);
 
-  const delBtn = ({ target }) => {
+  const delBtn = () => {
     for (let item in checkersObj) {
       if (checkersObj[item] === true) {
         for (let local in localStorage) {
@@ -53,27 +54,33 @@ function Main(props) {
   };
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.wrapper__input}>
-        <DataBlock />
+    <AppContext.Provider
+      value={{
+        getTodos,
+      }}
+    >
+      <div className={styles.wrapper}>
+        <div className={styles.wrapper__input}>
+          <DataBlock />
+        </div>
+        <div className={styles.wrapper__list}>
+          <h2>Things to do</h2>
+          <ul className={styles.__list}>
+            {todosArr.map((item, index) => {
+              return (
+                <Todo
+                  title={item.title}
+                  key={item.id}
+                  handler={updateCheckbox}
+                  delClick={delBtn}
+                  data={item.id}
+                />
+              );
+            })}
+          </ul>
+        </div>
       </div>
-      <div className={styles.wrapper__list}>
-        <h2>Things to do</h2>
-        <ul className={styles.__list}>
-          {todosArr.map((item, index) => {
-            return (
-              <Todo
-                title={item.title}
-                key={item.id}
-                handler={updateCheckbox}
-                delClick={delBtn}
-                data={item.id}
-              />
-            );
-          })}
-        </ul>
-      </div>
-    </div>
+    </AppContext.Provider>
   );
 }
 

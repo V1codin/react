@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import styles from "./styles.module.css";
 
 import Btn from "../modules/Button/Button";
+import EditInput from "./components/editBlock";
 
 function Todo({ title, delClick, handler, data }) {
   const [spanStyle, setSpanStyle] = useState({
     isToggled: false,
     style: styles.__topic,
+  });
+  const [editInp, setEditInp] = useState({
+    checker: false,
   });
 
   const isChecked = ({ target }) => {
@@ -16,7 +20,7 @@ function Todo({ title, delClick, handler, data }) {
     handler(temp);
   };
 
-  const doneBtn = ({ target }) => {
+  const doneBtn = () => {
     if (!spanStyle.isToggled) {
       setSpanStyle({
         ...spanStyle,
@@ -30,6 +34,9 @@ function Todo({ title, delClick, handler, data }) {
         style: styles.__topic,
       });
     }
+  };
+  const editClick = () => {
+    setEditInp({ ...editInp, checker: !editInp.checker });
   };
 
   return (
@@ -49,7 +56,13 @@ function Todo({ title, delClick, handler, data }) {
       <div className={styles.__btnWrapper}>
         <Btn className="__btn__aprove" title="Done" onClick={doneBtn} />
         <Btn className="__btn__cancel" title="Delete" onClick={delClick} />
-        <Btn className="__edit" title="edit" type="edit" />
+        <Btn className="__edit" title="edit" type="edit" onClick={editClick} />
+        <EditInput
+          checker={editInp.checker}
+          todoValue={title}
+          id={data}
+          showFn={editClick}
+        />
       </div>
     </li>
   );
