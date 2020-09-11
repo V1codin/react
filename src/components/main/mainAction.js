@@ -59,6 +59,8 @@ export const mainAction = ({
             userData.recipient,
             userData.deliveryWeight
           );
+          console.log(checkCost);
+
           if (checkCost === true) {
             request.cost(userData).then(({ data }) => {
               if (data) {

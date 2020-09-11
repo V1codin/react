@@ -84,6 +84,7 @@ function App(props) {
       isSelect: false,
       isOut: false,
     });
+
     setBranchLoc(null);
     setTrackRes(null);
   };

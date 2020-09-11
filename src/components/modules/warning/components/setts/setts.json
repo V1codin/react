@@ -10,5 +10,7 @@
   "incorrectSenderWarning": "Виберіть місто відправника",
   "incorrectRecipientWarning": "Виберіть місто одержувача",
   "incorrectWeight": "Введіть вагу посилки",
-  "incorrectCostWarning": "Введіть ваши дані"
+  "incorrectCostWarning": "Введіть ваши дані",
+
+  "incorrectLimitWeight": "Перевищено вагу посилки"
 }

@@ -8,7 +8,8 @@ class Validation {
     if (
       this.maskRefs.test(refSender) &&
       this.maskRefs.test(refRecipient) &&
-      weight !== ""
+      weight !== "" &&
+      Number(weight) <= 18999
     ) {
       return true;
     } else if (
@@ -29,6 +30,8 @@ class Validation {
       weight === ""
     ) {
       return "incorrectWeight";
+    } else if (Number(weight) > 18999) {
+      return "incorrectLimitWeight";
     } else {
       return "incorrectCostWarning";
     }
