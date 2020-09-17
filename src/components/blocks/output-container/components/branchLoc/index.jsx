@@ -17,6 +17,7 @@ export default function () {
 
   let topicMod = null;
   let workChecker = null;
+
   if (branchLocRes.WarehouseStatus === "Working") {
     topicMod = "working";
     workChecker = "Працює";

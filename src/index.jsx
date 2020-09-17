@@ -6,15 +6,15 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import Reducer from "./system/Reducer/Reducer";
 
 import "./index.css";
-import NovaPoshta from "./components/Main";
-import Warning from "./components/modules/warning/Warnings";
+import Main from "./components/Main";
+import Warning from "./components/modules/warning/";
 
 const store = createStore(Reducer, composeWithDevTools());
 
 ReactDOM.render(
   <Provider store={store}>
     <Warning />
-    <NovaPoshta />
+    <Main />
   </Provider>,
   document.getElementById("root")
 );

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styles from "./styles.module.css";
 
-import SelectBtn from "../Button/Button";
+import SelectBtn from "../Button/";
 import setts from "./Setts.json";
 
 import { AppContext } from "../../../system/Context";

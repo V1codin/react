@@ -16,6 +16,7 @@ export const mainAction = ({
   state,
 }) => {
   const res = {};
+
   for (let key in selectState) {
     if (selectState[key] === true) {
       switch (key) {
@@ -59,7 +60,6 @@ export const mainAction = ({
             userData.recipient,
             userData.deliveryWeight
           );
-          console.log(checkCost);
 
           if (checkCost === true) {
             request.cost(userData).then(({ data }) => {

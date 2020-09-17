@@ -1,8 +1,8 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import styles from "./styles.module.css";
-import Button from "../Button/Button";
+import Button from "../Button";
 import setts from "./components/setts/setts.json";
 
 import Warn from "./components/Warn";
@@ -26,14 +26,9 @@ const mapStateToProps = (state) => {
 function Warning(props) {
   const { warningObj, closeWarning } = props;
 
-  const raw = useMemo(() => {
-    return warningObj;
-  }, [warningObj]);
-
   const [state, setState] = useState({
     warns: [],
     close: () => {
-      raw.pop();
       closeWarning();
       setState({
         ...state,
@@ -43,7 +38,7 @@ function Warning(props) {
 
   if (warningObj === []) return null;
 
-  const myWarns = raw.map((item) => {
+  const myWarns = warningObj.map((item) => {
     return (
       <div className={styles.parent} key={item}>
         <div className={styles.container}>

@@ -33,7 +33,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-function App(props) {
+function Main(props) {
   const { initWarning, userData, clear } = props;
 
   const [state, setState] = useState({
@@ -78,6 +78,7 @@ function App(props) {
   const initFn = () => {
     setState({ ...state, isSelect: !state.isSelect });
   };
+
   const clearFn = () => {
     clear();
     setState({
@@ -112,4 +113,4 @@ function App(props) {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useMemo } from "react";
-import styles from "./styles.module.css";
+import { CostSelect } from "../../../system/Context";
+import { citiesRequest } from "./requestCities";
 
+import styles from "./styles.module.css";
 import SenderSelect from "./senderSelect";
 import RecipientSelect from "./recipientSelect/";
-import Request from "../../../system/Request/RequestFacade";
-import { CostSelect } from "../../../system/Context";
 import DeliveryBlock from "./deliveryWeight";
 
 function CostBlock() {
@@ -25,16 +25,7 @@ function CostBlock() {
   });
 
   useEffect(() => {
-    const request = new Request();
-
-    request.getCities().then(({ data }) => {
-      setServerRes({
-        ...serverRes,
-        partOne: data.slice(0, 1998),
-        partTwo: data.slice(1998, 3500),
-        partThree: data.slice(3500),
-      });
-    });
+    citiesRequest(serverRes, setServerRes);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
