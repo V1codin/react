@@ -12,5 +12,8 @@
   "incorrectWeight": "Введіть вагу посилки",
   "incorrectCostWarning": "Введіть ваши дані",
 
-  "incorrectLimitWeight": "Перевищено вагу посилки"
+  "incorrectLimitWeight": "Перевищено вагу посилки",
+
+  "trackingHistoryWarning": "Такий номер вже є у пошуку",
+  "branchLocHistoryWarning": "Запит про це відділення вже є у пошуку"
 }

@@ -36,11 +36,17 @@ class Validation {
       return "incorrectCostWarning";
     }
   }
-  validateNumber(number) {
-    if (this.maskNumber.test(number)) {
-      return true;
+  validateNumber(number, historyArray) {
+    const historyValid = historyArray.tracking.every((item) => item !== number);
+
+    if (historyValid) {
+      if (this.maskNumber.test(number)) {
+        return true;
+      } else {
+        return "incorrectNumberWarning";
+      }
     } else {
-      return "incorrectNumberWarning";
+      return "trackingHistoryWarning";
     }
   }
   validationCity(city) {
@@ -50,19 +56,27 @@ class Validation {
       return "incorrectCityWarning";
     }
   }
-  validationBranch(city, branchNum) {
-    if (this.validationCity(city)) {
-      if (city && branchNum && isFinite(branchNum)) {
-        return true;
-      } else if (!city && !branchNum) {
-        return "incorrectCityBranchWarning";
-      } else if (!city && branchNum) {
-        return "incorrectCityWarning";
-      } else if (city && !branchNum) {
-        return "incorrectBranchWarning";
-      } else if (city && !isFinite(branchNum)) {
-        return "incorrectBranchWarning";
+  validationBranch(city, branchNum, historyArray) {
+    const historyValid = historyArray.branchLoc
+      .filter((item) => item.city === city)
+      .every((item) => item.branchNumber !== branchNum);
+
+    if (historyValid) {
+      if (this.validationCity(city)) {
+        if (city && branchNum && isFinite(branchNum)) {
+          return true;
+        } else if (!city && !branchNum) {
+          return "incorrectCityBranchWarning";
+        } else if (!city && branchNum) {
+          return "incorrectCityWarning";
+        } else if (city && !branchNum) {
+          return "incorrectBranchWarning";
+        } else if (city && !isFinite(branchNum)) {
+          return "incorrectBranchWarning";
+        }
       }
+    } else {
+      return "branchLocHistoryWarning";
     }
   }
 }

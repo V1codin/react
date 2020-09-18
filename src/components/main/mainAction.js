@@ -8,12 +8,20 @@ export const mainAction = ({
   selectState,
   setTrackRes,
   initWarning,
+
   setBranchLoc,
   setDeliveryCost,
   setState,
   userData,
   deliveryCostRes,
+
   state,
+
+  addTrack,
+  historyObj,
+  addBranchLoc,
+  addDeliveryCost,
+
 }) => {
   const res = {};
 
@@ -21,12 +29,21 @@ export const mainAction = ({
     if (selectState[key] === true) {
       switch (key) {
         case "tracking":
-          const checkNumber = validObj.validateNumber(userData.number);
+          const checkNumber = validObj.validateNumber(
+            userData.number,
+            historyObj
+          );
+
           if (checkNumber === true) {
             request.tracking(userData).then((r) => {
               if (r) {
+                const date = new Date().toLocaleString();
+                localStorage.setItem(`Tracking ${date}`, userData.number);
+                addTrack(userData.number);
+
                 const { data } = r;
                 setTrackRes(data[0]);
+
                 setState({ ...state, isOut: true, isSelect: false });
               } else {
                 initWarning("noNumberWarning");
@@ -39,11 +56,23 @@ export const mainAction = ({
         case "branchLoc":
           const checkBranch = validObj.validationBranch(
             userData.branchCity,
-            userData.branchNumber
+            userData.branchNumber,
+            historyObj
           );
+
           if (checkBranch === true) {
             request.branchLoc(userData).then((res) => {
               if (res) {
+                const date = new Date().toLocaleString();
+                const raw = {
+                  city: userData.branchCity,
+                  branchNumber: userData.branchNumber,
+                };
+                const branchLoc = JSON.stringify(raw);
+
+                addBranchLoc(raw);
+                localStorage.setItem(`Location ${date}`, branchLoc);
+
                 setBranchLoc(res);
                 setState({ ...state, isOut: true, isSelect: false });
               } else {
@@ -64,6 +93,17 @@ export const mainAction = ({
           if (checkCost === true) {
             request.cost(userData).then(({ data }) => {
               if (data) {
+                const date = new Date().toLocaleString();
+                const raw = {
+                  sender: userData.sender,
+                  recipient: userData.recipient,
+                  deliveryWeight: userData.deliveryWeight,
+                };
+                const branchLoc = JSON.stringify(raw);
+
+                addDeliveryCost(raw);
+                localStorage.setItem(`Cost ${date}`, branchLoc);
+
                 setDeliveryCost({
                   ...deliveryCostRes,
                   cost: data[0],

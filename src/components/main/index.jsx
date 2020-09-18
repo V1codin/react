@@ -1,17 +1,37 @@
 import React, { useState } from "react";
-import styles from "./styles.module.css";
 import { connect } from "react-redux";
-
 import { AppContext } from "../../system/Context";
-
-import InputContainer from "../blocks/input-container";
-import Selector from "../modules/select";
-
 import { mainAction } from "./mainAction";
+
+import styles from "./styles.module.css";
+import InputContainer from "../blocks/input-container";
 import OutContainer from "../blocks/output-container";
+import HistoryContainer from "../blocks/history-cointainer";
+import Selector from "../modules/select";
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    addTrack: (number) => {
+      return dispatch({
+        type: "HISTORY_ADD_TRACK",
+        number,
+      });
+    },
+
+    addBranchLoc: (branchLoc) => {
+      return dispatch({
+        type: "HISTORY_ADD_BRANCH_LOC",
+        location: branchLoc,
+      });
+    },
+
+    addDeliveryCost: (deliveryCost) => {
+      return dispatch({
+        type: "HISTORY_ADD_DELIVERY_COST",
+        cost: deliveryCost,
+      });
+    },
+
     initWarning: (nameOfWarning) => {
       return dispatch({
         type: "INIT_WARNING",
@@ -30,11 +50,21 @@ const mapStateToProps = (state) => {
   return {
     userData: state.inputData,
     warningObj: state.reducerWarning,
+    historyObj: state.history,
+    results: state.results,
   };
 };
 
 function Main(props) {
-  const { initWarning, userData, clear } = props;
+  const {
+    initWarning,
+    userData,
+    clear,
+    addTrack,
+    historyObj,
+    addBranchLoc,
+    addDeliveryCost,
+  } = props;
 
   const [state, setState] = useState({
     isSelect: false,
@@ -60,12 +90,19 @@ function Main(props) {
       selectState,
       setTrackRes,
       initWarning,
+
       setBranchLoc,
       setDeliveryCost,
       setState,
       userData,
       deliveryCostRes,
+
       state,
+
+      addTrack,
+      historyObj,
+      addBranchLoc,
+      addDeliveryCost,
     });
 
     setSelect({
@@ -85,6 +122,8 @@ function Main(props) {
       isSelect: false,
       isOut: false,
     });
+
+    localStorage.clear();
 
     setBranchLoc(null);
     setTrackRes(null);
@@ -107,6 +146,7 @@ function Main(props) {
       >
         <InputContainer />
         <OutContainer checker={state.isOut} />
+        <HistoryContainer />
         <Selector checker={state.isSelect} />
       </AppContext.Provider>
     </div>

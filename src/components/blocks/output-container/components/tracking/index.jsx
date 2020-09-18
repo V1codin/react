@@ -11,6 +11,9 @@ export default function () {
   return (
     <div className={styles.container__block}>
       <h3 className={styles.out__article}>Відстеження</h3>
+      <p className={styles.out__topic}>
+        Номер ТТН: <span className={styles.out__span}>{trackRes.Number}</span>
+      </p>
       <p className={styles.out__topic}>Статус: {trackRes.Status}</p>
       <p className={styles.out__topic}>
         Маршрут: {trackRes.CitySender} - {trackRes.CityRecipient}
