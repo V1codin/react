@@ -18,6 +18,11 @@ function TrackRes(props) {
   });
   const id = match.params.id;
 
+  useEffect(() => {
+    getNumber(id, setState);
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className={styles.container__block}>
       <h3 className={styles.out__article}>Відстеження</h3>
