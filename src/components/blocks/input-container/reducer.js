@@ -26,7 +26,7 @@ export default function (state = defState, { type, updated }) {
       branchNumber: updated,
     };
   }
-  if (type === "CLEAR") {
+  if (type === "CLEAR_INPUT") {
     return defState;
   }
   if (type === "EXTRACT_SENDER") {

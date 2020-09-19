@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { AppContext } from "../../system/Context";
 import { mainAction } from "./mainAction";
@@ -43,6 +43,11 @@ const mapDispatchToProps = (dispatch) => {
         type: "CLEAR",
       });
     },
+    clearInputData: () => {
+      return dispatch({
+        type: "CLEAR_INPUT",
+      });
+    },
   };
 };
 
@@ -63,6 +68,7 @@ function Main(props) {
     historyObj,
     addBranchLoc,
     addDeliveryCost,
+    clearInputData,
   } = props;
 
   const [state, setState] = useState({
@@ -110,6 +116,10 @@ function Main(props) {
       cost: false,
     });
   };
+  useEffect(() => {
+    clearInputData();
+    // eslint-disable-next-line
+  }, []);
 
   const initFn = () => {
     setState({ ...state, isSelect: !state.isSelect });
@@ -117,6 +127,7 @@ function Main(props) {
 
   const clearFn = () => {
     clear();
+    clearInputData();
     setState({
       isSelect: false,
       isOut: false,
