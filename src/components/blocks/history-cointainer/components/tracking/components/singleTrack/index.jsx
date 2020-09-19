@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
 
-// import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getNumber } from "../redux/asyncAction";
 import { useState } from "react";
@@ -41,16 +40,3 @@ function TrackRes(props) {
 }
 
 export default TrackRes;
-
-/*
-<div className={styles.container__block}>
-      <h3 className={styles.out__article}>Відстеження</h3>
-      <p className={styles.out__topic}>
-        Номер ТТН: <span className={styles.out__span}>{trackRes.Number}</span>
-      </p>
-      <p className={styles.out__topic}>Статус: {trackRes.Status}</p>
-      <p className={styles.out__topic}>
-        Маршрут: {trackRes.CitySender} - {trackRes.CityRecipient}
-      </p>
-    </div>
-    */
