@@ -4,4 +4,6 @@ import reducerWarning from "../../components/modules/warning/components/setts/re
 import inputData from "../../components/blocks/input-container/reducer";
 import history from "../../components/blocks/history-cointainer/redux/reducer";
 
-export default combineReducers({ reducerWarning, inputData, history });
+import cities from "../CitiesReducer/reducer";
+
+export default combineReducers({ reducerWarning, inputData, history, cities });

@@ -1,8 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import { connect } from "react-redux";
 
 import { CostSelect } from "../../../../system/Context";
+
+const mapStateToProps = (state) => {
+  return {
+    serverCities: state.cities.costCities,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -16,10 +22,22 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 function RecipientSelect(props) {
-  const { extractData } = props;
+  const { extractData, serverCities } = props;
   const context = useContext(CostSelect);
+  const { state, setState } = context;
 
-  const { state, setState, cities } = context;
+  const [cities, setCities] = useState([]);
+
+  useEffect(() => {
+    const res = serverCities.map((item) => {
+      return (
+        <option value={item.Ref} name={item.Ref} key={item.Ref}>
+          {item.Description}
+        </option>
+      );
+    });
+    setCities(res);
+  }, [serverCities]);
 
   const selectHandler = ({ target }) => {
     extractData(target.value);
@@ -47,4 +65,4 @@ function RecipientSelect(props) {
   );
 }
 
-export default connect(null, mapDispatchToProps)(RecipientSelect);
+export default connect(mapStateToProps, mapDispatchToProps)(RecipientSelect);

@@ -7,7 +7,7 @@ export default function Router() {
   return (
     <Switch>
       <Route exact path="/" component={Main} />
-      <Route path="/track/:id" component={TrackRes} />
+      <Route exact path="/track/:id" component={TrackRes} />
     </Switch>
   );
 }

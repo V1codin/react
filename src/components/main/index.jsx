@@ -51,7 +51,6 @@ const mapStateToProps = (state) => {
     userData: state.inputData,
     warningObj: state.reducerWarning,
     historyObj: state.history,
-    results: state.results,
   };
 };
 
@@ -127,6 +126,11 @@ function Main(props) {
 
     setBranchLoc(null);
     setTrackRes(null);
+    setDeliveryCost({
+      sender: "",
+      reciver: "",
+      cost: [],
+    });
   };
   return (
     <div className={styles.container__wrapper}>

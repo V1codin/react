@@ -3,6 +3,14 @@ import styles from "./styles.module.css";
 import { connect } from "react-redux";
 
 import { CostSelect } from "../../../../system/Context";
+import { useState } from "react";
+import { useEffect } from "react";
+
+const mapStateToProps = (state) => {
+  return {
+    serverCities: state.cities.costCities,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -16,8 +24,21 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 function SenderSelect(props) {
-  const { extractData } = props;
-  const { state, setState, cities } = useContext(CostSelect);
+  const { extractData, serverCities } = props;
+  const { state, setState } = useContext(CostSelect);
+
+  const [cities, setCities] = useState([]);
+
+  useEffect(() => {
+    const res = serverCities.map((item) => {
+      return (
+        <option value={item.Ref} name={item.Ref} key={item.Ref}>
+          {item.Description}
+        </option>
+      );
+    });
+    setCities(res);
+  }, [serverCities]);
 
   const selectHandler = ({ target }) => {
     extractData(target.value);
@@ -45,4 +66,4 @@ function SenderSelect(props) {
   );
 }
 
-export default connect(null, mapDispatchToProps)(SenderSelect);
+export default connect(mapStateToProps, mapDispatchToProps)(SenderSelect);
