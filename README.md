@@ -4,7 +4,7 @@ This application allows you to:
 
 --Get information about your Nova Poshta delivery.
 
---Get information about Nova Poshta branches location via number of the branch and its city.
+--Get information about Nova Poshta branches location via number of the branch and the city where the branch is located.
 
 --Get information about delivery warehouse to warehouse cost.
 
