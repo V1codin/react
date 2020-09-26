@@ -99,10 +99,10 @@ export const mainAction = ({
                   recipient: userData.recipient,
                   deliveryWeight: userData.deliveryWeight,
                 };
-                const branchLoc = JSON.stringify(raw);
+                const cost = JSON.stringify(raw);
 
                 addDeliveryCost(raw);
-                localStorage.setItem(`Cost ${date}`, branchLoc);
+                localStorage.setItem(`Cost ${date}`, cost);
 
                 setDeliveryCost({
                   ...deliveryCostRes,
