@@ -1,0 +1,48 @@
+.container__block {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 20px;
+  position: relative;
+  overflow-y: auto;
+  width: 285px;
+  overflow-y: auto;
+  text-align: center;
+  font-family: Muemo, sans-serif;
+  color: #222222;
+  margin: 20px auto;
+  padding: 10px;
+  background: #edf765;
+}
+.out__article {
+  color: #7e1af0;
+}
+.out__topic,
+.out__article {
+  font-weight: bold;
+  margin-top: 5px;
+}
+.out__topic_greenColor {
+  color: #2e9018;
+}
+.out__topic_blueColor {
+  color: #3148ca;
+}
+.out__topic_redColor {
+  color: #ca3131;
+}
+.out__topic_blackColor {
+  color: #000;
+}
+.out__link {
+  font-weight: 700;
+  color: #1b1fff;
+  border: 2px solid grey;
+  margin-top: 20px;
+  padding: 10px;
+  text-decoration: none;
+}
+.out__link:hover {
+  background-color: #f4ff28;
+}

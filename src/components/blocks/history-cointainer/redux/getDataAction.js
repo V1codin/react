@@ -13,7 +13,7 @@ export const init = () => {
       defState.branchLoc.push(JSON.parse(localStorage[item]));
     }
     if (item.includes("Cost")) {
-      defState.cost.push(localStorage[item]);
+      defState.cost.push(JSON.parse(localStorage[item]));
     }
   });
 

@@ -91,7 +91,6 @@ export const mainAction = ({
 
           if (checkCost === true) {
             request.cost(userData).then(({ data }) => {
-              console.log(userData);
               if (data) {
                 const date = new Date().toLocaleString();
                 const raw = {
