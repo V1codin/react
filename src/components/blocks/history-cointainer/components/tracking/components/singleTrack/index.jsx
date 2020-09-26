@@ -9,9 +9,9 @@ function TrackRes(props) {
   const { match } = props;
 
   const [state, setState] = useState({
-    Number: "Номер",
-    Status: "Статус",
-    CitySender: "Відправник",
+    Number: "",
+    Status: "",
+    CitySender: "",
     CityRecipient: "",
   });
   const id = match.params.id;
