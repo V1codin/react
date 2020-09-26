@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { getCost } from "../redux/asyncAction";
 import { Link } from "react-router-dom";
@@ -21,7 +21,7 @@ function CostRes(props) {
 
   const resStyle = styles.out__topic + " " + styles.out__topic_blueColor;
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     getCost(option, setState);
     // eslint-disable-next-line
   }, []);
