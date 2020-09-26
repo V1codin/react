@@ -3,8 +3,7 @@ import styles from "./styles.module.css";
 
 import { Link } from "react-router-dom";
 import { getNumber } from "../redux/asyncAction";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 function TrackRes(props) {
   const { match } = props;

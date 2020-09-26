@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { connect } from "react-redux";
 import { AppContext } from "../../system/Context";
 import { mainAction } from "./mainAction";
@@ -82,6 +82,16 @@ function Main(props) {
     cost: false,
   });
 
+  const [costState, setCostState] = useState({
+    defaultSend: "Місто відправлення",
+    selectSend: "Місто відправлення",
+    refSend: "",
+
+    defaultRecipient: "Місто отримування",
+    selectRecipient: "Місто отримування",
+    refRec: "",
+  });
+
   const [trackRes, setTrackRes] = useState({});
   const [branchLocRes, setBranchLoc] = useState({});
   const [deliveryCostRes, setDeliveryCost] = useState({
@@ -116,7 +126,7 @@ function Main(props) {
       cost: false,
     });
   };
-  useEffect(() => {
+  useLayoutEffect(() => {
     clearInputData();
     // eslint-disable-next-line
   }, []);
@@ -142,6 +152,15 @@ function Main(props) {
       reciver: "",
       cost: [],
     });
+    setCostState({
+      defaultSend: "Місто відправлення",
+      selectSend: "Місто відправлення",
+      refSend: "",
+
+      defaultRecipient: "Місто отримування",
+      selectRecipient: "Місто отримування",
+      refRec: "",
+    });
   };
   return (
     <div className={styles.container__wrapper}>
@@ -157,6 +176,9 @@ function Main(props) {
           selectState,
           setSelect,
           selectorBtn,
+
+          costState,
+          setCostState,
         }}
       >
         <InputContainer />

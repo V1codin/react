@@ -8,15 +8,6 @@ const mapStateToProps = (state) => {
     numbers: state.history.tracking,
   };
 };
-const mapDispatchToProps = (dispatch) => {
-  return {
-    test: () => {
-      return dispatch({
-        type: " CHECK",
-      });
-    },
-  };
-};
 
 function TrackBlock(props) {
   const { numbers } = props;
@@ -41,4 +32,4 @@ function TrackBlock(props) {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TrackBlock);
+export default connect(mapStateToProps, null)(TrackBlock);

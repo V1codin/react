@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import { connect } from "react-redux";
 
-import { CostSelect } from "../../../../system/Context";
+import { AppContext } from "../../../../system/Context";
 
 const mapStateToProps = (state) => {
   return {
@@ -23,8 +23,9 @@ const mapDispatchToProps = (dispatch) => {
 
 function RecipientSelect(props) {
   const { extractData, serverCities } = props;
-  const context = useContext(CostSelect);
-  const { state, setState } = context;
+  const context = useContext(AppContext);
+
+  const { costState, setCostState } = context;
 
   const [cities, setCities] = useState([]);
 
@@ -41,7 +42,10 @@ function RecipientSelect(props) {
 
   const selectHandler = ({ target }) => {
     extractData(target.value);
-    setState({ ...state, selectRecipient: state[target.innerHTML] });
+    setCostState({
+      ...costState,
+      selectRecipient: costState[target.innerHTML],
+    });
   };
 
   const selectClasses = styles.inputs + " " + styles.option__select_textCl;
@@ -52,11 +56,11 @@ function RecipientSelect(props) {
         <select
           className={selectClasses}
           onChange={selectHandler}
-          value={state.selectRecipient}
+          value={costState.selectRecipient}
           id="CityRecipient"
         >
           <option disabled defaultValue>
-            {state.defaultRecipient}
+            {costState.defaultRecipient}
           </option>
           {cities}
         </select>

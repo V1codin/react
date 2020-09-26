@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styles from "./styles.module.css";
 import { connect } from "react-redux";
 
-import { CostSelect } from "../../../../system/Context";
+import { AppContext } from "../../../../system/Context";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch) => {
 
 function SenderSelect(props) {
   const { extractData, serverCities } = props;
-  const { state, setState } = useContext(CostSelect);
+  const { costState, setCostState } = useContext(AppContext);
 
   const [cities, setCities] = useState([]);
 
@@ -42,7 +42,7 @@ function SenderSelect(props) {
 
   const selectHandler = ({ target }) => {
     extractData(target.value);
-    setState({ ...state, selectSend: state[target.innerHTML] });
+    setCostState({ ...costState, selectSend: costState[target.innerHTML] });
   };
 
   const selectClasses = styles.inputs + " " + styles.option__select_textCl;
@@ -53,11 +53,11 @@ function SenderSelect(props) {
         <select
           className={selectClasses}
           onChange={selectHandler}
-          value={state.selectSend}
+          value={costState.selectSend}
           id="CitySender"
         >
           <option disabled defaultValue>
-            {state.defaultSend}
+            {costState.defaultSend}
           </option>
           {cities}
         </select>
