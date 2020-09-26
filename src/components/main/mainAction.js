@@ -22,8 +22,6 @@ export const mainAction = ({
   addBranchLoc,
   addDeliveryCost,
 }) => {
-  const res = {};
-
   for (let key in selectState) {
     if (selectState[key] === true) {
       switch (key) {
@@ -128,5 +126,5 @@ export const mainAction = ({
   }
   setState({ ...state, isSelect: false });
 
-  return res;
+  return true;
 };
