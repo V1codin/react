@@ -19,12 +19,12 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-    warningObj: state.reducerWarning.init,
+    warningArr: state.warning.init,
   };
 };
 
 function Warning(props) {
-  const { warningObj, closeWarning } = props;
+  const { warningArr, closeWarning } = props;
 
   const [state, setState] = useState({
     warns: [],
@@ -36,9 +36,9 @@ function Warning(props) {
     },
   });
 
-  if (warningObj === []) return null;
+  if (warningArr.length === 0) return null;
 
-  const myWarns = warningObj.map((item) => {
+  const myWarns = warningArr.map((item) => {
     return (
       <div className={styles.parent} key={item}>
         <div className={styles.container}>
