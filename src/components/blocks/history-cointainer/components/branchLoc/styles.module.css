@@ -7,11 +7,13 @@
   text-align: center;
   font-family: Muemo, sans-serif;
   color: #222222;
+  width: 245px;
   margin: 10px;
   padding: 10px;
   background: #edf765;
 }
 .history__list {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,7 +38,6 @@
   width: 100%;
 }
 .history__link {
-  line-height: 1.3em;
   padding: 10px;
   display: block;
   font-weight: bold;
