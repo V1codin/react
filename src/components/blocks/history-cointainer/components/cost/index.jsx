@@ -16,7 +16,7 @@ function CostBlock(props) {
 
   return (
     <div className={styles.container__block}>
-      <h3 className={styles.history__article}>Ціна посилки</h3>
+      <h3 className={styles.history__article}>Вартість доставки</h3>
       <ul className={styles.history__list}>
         {cost.map((item, index) => {
           return (
