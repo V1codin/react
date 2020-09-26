@@ -3,11 +3,16 @@ const defState = {
   branchCity: "",
   branchNumber: "",
   sender: "",
+  sendName: "",
   recipient: "",
+  recName: "",
   deliveryWeight: "",
 };
 
-export default function (state = defState, { type, updated }) {
+export default function (
+  state = defState,
+  { type, updated, sendName, recName }
+) {
   if (type === "CHANGE_NUMBER") {
     return {
       ...state,
@@ -33,12 +38,14 @@ export default function (state = defState, { type, updated }) {
     return {
       ...state,
       sender: updated,
+      sendName: sendName,
     };
   }
   if (type === "EXTRACT_RECIPIENT") {
     return {
       ...state,
       recipient: updated,
+      recName: recName,
     };
   }
   if (type === "CHANGE_WEIGHT") {

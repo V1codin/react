@@ -21,7 +21,6 @@ export const mainAction = ({
   historyObj,
   addBranchLoc,
   addDeliveryCost,
-
 }) => {
   const res = {};
 
@@ -92,9 +91,13 @@ export const mainAction = ({
 
           if (checkCost === true) {
             request.cost(userData).then(({ data }) => {
+              console.log(userData);
               if (data) {
                 const date = new Date().toLocaleString();
                 const raw = {
+                  senderName: userData.sendName,
+                  recipientName: userData.recName,
+
                   sender: userData.sender,
                   recipient: userData.recipient,
                   deliveryWeight: userData.deliveryWeight,

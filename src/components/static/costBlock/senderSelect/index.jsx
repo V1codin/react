@@ -14,10 +14,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    extractData: (data) => {
+    extractData: (value, senderName) => {
       dispatch({
         type: "EXTRACT_SENDER",
-        updated: data,
+        updated: value,
+        sendName: senderName,
       });
     },
   };
@@ -41,7 +42,7 @@ function SenderSelect(props) {
   }, [serverCities]);
 
   const selectHandler = ({ target }) => {
-    extractData(target.value);
+    extractData(target.value, target.selectedOptions[0].text);
     setCostState({ ...costState, selectSend: costState[target.innerHTML] });
   };
 
