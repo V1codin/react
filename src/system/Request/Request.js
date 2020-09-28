@@ -112,7 +112,7 @@ class RequestData {
       .then((r) => {
         return r.json();
       })
-      .catch((r) => console.log(r));
+      .catch((e) => console.log(e));
   }
 }
 
