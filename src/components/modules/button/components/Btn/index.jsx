@@ -14,9 +14,10 @@ export default function Btn({ className, onClick, title, classList }) {
   if (classList) {
     let classNameArr = className.split(" ");
 
-    let resNames = "";
-
-    classNameArr.map((item) => (resNames += `${styles[item]} `));
+    const resNames = classNameArr.reduce(
+      (ac, item) => (ac += `${styles[item]} `),
+      ""
+    );
 
     return (
       <button type="button" onClick={onClick} className={resNames}>

@@ -37,7 +37,14 @@ export default function Button({
       );
     }
     default: {
-      return <Btn onClick={onClick} className={className} title={title} />;
+      return (
+        <Btn
+          onClick={onClick}
+          className={className}
+          title={title}
+          classList={classList}
+        />
+      );
     }
   }
 }

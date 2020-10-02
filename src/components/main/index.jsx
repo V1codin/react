@@ -132,6 +132,10 @@ function Main(props) {
   }, []);
 
   const initFn = () => {
+    if (!state.isSelect) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
     setState({ ...state, isSelect: !state.isSelect });
   };
 

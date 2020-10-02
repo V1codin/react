@@ -41,6 +41,7 @@ export default function ({ checker }) {
         })}
         <SelectBtn
           className="select__btn"
+          classList={true}
           title="Шукати"
           onClick={selectorBtn}
         />

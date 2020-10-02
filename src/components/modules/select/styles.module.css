@@ -98,7 +98,13 @@
 }
 
 @media (max-width: 780px) {
-}
-
-@media (max-width: 780px) {
+  .selector {
+    position: relative;
+    top: 0;
+    width: 295px;
+    margin: 15px auto 0;
+  }
+  .select__article {
+    margin: 0;
+  }
 }
