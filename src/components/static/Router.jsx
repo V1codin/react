@@ -1,8 +1,8 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import SingleTrack from "../blocks/history-cointainer/components/tracking/components/singleTrack/";
-import SingleLocation from "../blocks/history-cointainer/components/branchLoc/components/singleLocation/";
-import SingleCost from "../blocks/history-cointainer/components/cost/components/singleCost";
+import SingleTrack from "../blocks/HistoryCointainer/components/Tracking/components/singleTrack";
+import SingleLocation from "../blocks/HistoryCointainer/components/BranchLoc/components/singleLocation";
+import SingleCost from "../blocks/HistoryCointainer/components/Cost/components/singleCost";
 import Main from "../Main";
 
 export default function Router() {

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import InitBtn from "../../modules/Button/";
+import InitBtn from "../../modules/Button";
 
 import { AppContext } from "../../../system/Context";
 

@@ -4,10 +4,10 @@ import { AppContext } from "../../system/Context";
 import { mainAction } from "./mainAction";
 
 import styles from "./styles.module.css";
-import InputContainer from "../blocks/input-container";
-import OutContainer from "../blocks/output-container";
-import HistoryContainer from "../blocks/history-cointainer";
-import Selector from "../modules/select";
+import InputContainer from "../blocks/InputContainer";
+import OutContainer from "../blocks/OutputContainer";
+import HistoryContainer from "../blocks/HistoryCointainer";
+import Selector from "../modules/Select";
 
 const mapDispatchToProps = (dispatch) => {
   return {

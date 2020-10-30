@@ -1,9 +1,9 @@
 import React from "react";
 
 import styles from "./styles.module.css";
-import SenderSelect from "./senderSelect";
-import RecipientSelect from "./recipientSelect/";
-import DeliveryBlock from "./deliveryWeight";
+import SenderSelect from "./SenderSelect";
+import RecipientSelect from "./RecipientSelect";
+import DeliveryBlock from "./DeliveryWeight";
 
 function CostBlock() {
   return (

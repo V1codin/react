@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./styles.module.css";
 
-import Track from "./components/tracking";
-import BranchLoc from "./components/branchLoc";
-import DeliveryCost from "./components/cost";
+import Track from "./components/Tracking";
+import BranchLoc from "./components/BranchLoc";
+import DeliveryCost from "./components/Cost";
 
 export default function ({ checker }) {
   if (checker === false) return null;

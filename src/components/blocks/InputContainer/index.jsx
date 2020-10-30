@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./styles.module.css";
 
-import Header from "../../Static/Header";
-import Number from "../../Static/numberBlock";
-import BranchLoc from "../../Static/branchBlock";
-import ButtonBlock from "../buttonsBlock/index";
-import CostBlock from "../../Static/costBlock";
+import Header from "../../static/Header";
+import Number from "../../static/NumberBlock";
+import BranchLoc from "../../static/BranchBlock";
+import ButtonBlock from "../ButtonsBlock";
+import CostBlock from "../../static/CostBlock";
 
 export default function () {
   return (

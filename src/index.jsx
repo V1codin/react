@@ -11,7 +11,7 @@ import CitiesRef from "./system/CitiesRefRequest/citiesRequest";
 
 import "./index.css";
 import App from "./components/App";
-import Warning from "./components/modules/warning/";
+import Warning from "./components/modules/Warning";
 
 const store = createStore(Reducer, composeWithDevTools());
 const request = new Request();

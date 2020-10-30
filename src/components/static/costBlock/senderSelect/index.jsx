@@ -1,10 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import styles from "./styles.module.css";
 import { connect } from "react-redux";
-
 import { AppContext } from "../../../../system/Context";
-import { useState } from "react";
-import { useEffect } from "react";
 
 const mapStateToProps = (state) => {
   return {
