@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./styles.module.css";
 
 import Main from "../Main";
-import Header from "../Static/Header";
-import Footer from "../Static/Footer";
+import Header from "../static/Header";
+import Footer from "../static/Footer";
 
 function App() {
   return (

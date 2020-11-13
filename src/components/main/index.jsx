@@ -4,7 +4,7 @@ import Todo from "../TodoItem";
 import { connect } from "react-redux";
 import { AppContext } from "../../system/Context/";
 
-import DataBlock from "../Static/InputData";
+import DataBlock from "../static/InputData";
 
 const mapStateToProps = (state) => {
   return {
