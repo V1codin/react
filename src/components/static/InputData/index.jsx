@@ -39,9 +39,19 @@ function UserData(props) {
 
   const onSubmit = () => {
     if (state.value.length > 0) {
+      const keys = Object.keys(localStorage);
+      let max = 0;
+
+      if (keys.length > 0) {
+        const arrayOfIds = keys.map((item) =>
+          parseInt(item.replace(/^([^0-9]+)([0-9]+)$/g, "$2"))
+        );
+        max = Math.max.apply(null, arrayOfIds) + 1;
+      }
+
       localStorage.setItem(
-        `title ${localStorage.length}`,
-        JSON.stringify({ title: state.value, id: localStorage.length })
+        `title ${max}`,
+        JSON.stringify({ title: state.value, id: max })
       );
       addChecker(todoEls.length);
       getTodos();
