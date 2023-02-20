@@ -2,11 +2,11 @@
 
 This application allows you to:
 
---Get information about your Nova Poshta delivery.
+- Get information about your Nova Poshta delivery.
 
---Get information about Nova Poshta branch location via number of the branch and the city where the branch is located.
+- Get information about Nova Poshta branch location via number of the branch and the city where the branch is located.
 
---Get information about delivery warehouse to warehouse cost.
+- Get information about delivery warehouse to warehouse cost.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
